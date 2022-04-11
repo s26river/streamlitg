@@ -45,14 +45,14 @@ def graph_plt():
         #line_chart.add_rows(additional_data)
         #time.sleep(0.5)
 
-    f = st.file_uploader(label='ファイルのアップロード:')
-    st.write('選択されたファイル: ', f)
+    #f = st.file_uploader(label='ファイルのアップロード:')
+    #st.write('選択されたファイル: ', f)
 
-    if f is not None:
+    #if f is not None:
         # XXX: 信頼できないファイルは安易に評価しないこと
-        data = f.getvalue()
-        text = data.decode('utf-8')
-        st.write('ファイルの内容：', text)
+        #data = f.getvalue()
+        #text = data.decode('utf-8')
+        #st.write('ファイルの内容：', text)
 
     
     UNOW=datetime.now()
@@ -89,7 +89,7 @@ def graph_plt():
         #additional_data = chart_data.iloc[100+i,:].T
         #line_chart.add_rows(additional_data)
         #time.sleep(0.001)
-    #st.line_chart(chart_data)
+    st.line_chart(chart_data)
 
     #st.table(chart_data)
     #csv = chart_data.to_csv(index=False)  
