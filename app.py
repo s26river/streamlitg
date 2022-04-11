@@ -81,7 +81,7 @@ def graph_plt():
     dr07=dfpcd.rolling(window=7).mean()#移動平均7日
     dr28=dfpcd.rolling(window=28).mean()#移動平均28日
     #st.dataframe()
-    chart_data = pd.DataFrame({"移動平均7日":dr07["全国"],"移動平均28日":dr28["全国"]})
+    chart_data = pd.DataFrame({"全国移動平均7日":dr07["全国"],"全国移動平均28日":dr28["全国"],"神奈川移動平均7日":"dr07["神奈川"]})
     #折れ線グラフ (初期状態)
     #line_chart = st.line_chart(chart_data.iloc[100, :].T)
     #for i in range(1000):
