@@ -54,12 +54,13 @@ def graph_plt():
         text = data.decode('utf-8')
         st.write('ファイルの内容：', text)
 
-    #st.write("📈　Line-Chart")
+    
     UNOW=datetime.now()
     JST=timezone(timedelta(hours=+9))
     NOW=UNOW+timedelta(hours=+9)
     TIME=datetime(NOW.year,NOW.month,NOW.day,NOW.hour,NOW.minute,tzinfo=JST)
     STIME=TIME.strftime("%Y年%m月%d日%H時%M分")
+    st.write(f"日本のコロナ感染者数推移{STIME}現在")
     df = pd.read_csv('https://covid19.mhlw.go.jp/public/opendata/newly_confirmed_cases_daily.csv',parse_dates=True,index_col='Date')
     dfp=df
     dfp.columns.name="感染者数"
