@@ -7,7 +7,7 @@ from datetime import datetime,date,timedelta,timezone
 
 def graph_plt():
 
-    st.title("STREAMLITのテストです。２")
+    st.title("STREAMLITのテストです。３")
 
     #status_area = st.empty()
     # カウントダウン
