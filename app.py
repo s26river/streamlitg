@@ -90,5 +90,19 @@ def graph_plt():
         #line_chart.add_rows(additional_data)
         #time.sleep(0.001)
     st.line_chart(chart_data)
+
+    st.table(chart_data)
+    csv = chart_data.to_csv(index=False)  
+
+    # utf-8
+    b64 = base64.b64encode(csv.encode()).decode()
+    href = f'<a href="data:application/octet-stream;base64,{b64}" download="result_utf-8.csv">Download Link</a>'
+    st.markdown(f"CSVファイルのダウンロード(utf-8):  {href}", unsafe_allow_html=True)
+
+    # utf-8(BOM)
+    b64 = base64.b64encode(csv.encode('utf-8-sig')).decode()
+    href = f'<a href="data:application/octet-stream;base64,{b64}" download="result_utf-8-sig.csv">Download Link</a>'
+    st.markdown(f"CSVファイルのダウンロード(utf-8 BOM):  {href}", unsafe_allow_html=True)
+
 if __name__=='__main__':
     graph_plt()
