@@ -80,7 +80,7 @@ def graph_plt():
     dr=dfpcd.resample("7D").mean()
     dr07=dfpcd.rolling(window=7).mean()#移動平均7日
     dr28=dfpcd.rolling(window=28).mean()#移動平均28日
-    #st.dataframe()
+    st.dataframe(dfpcd)
     #chart_data = pd.DataFrame({"全国移動平均7日":dr07["全国"],"全国移動平均28日":dr28["全国"]})
     chart_data = pd.DataFrame({"全国移動平均7日":dr07["東京"],"全国移動平均28日":dr28["東京"]})
     #chart_data = pd.DataFrame(dfpcd)
