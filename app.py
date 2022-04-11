@@ -4,7 +4,11 @@ import numpy as np
 import time
 from datetime import datetime,date,timedelta,timezone
 
+
 def graph_plt():
+
+    st.title("STREAMLITのテストです")
+
     #status_area = st.empty()
     # カウントダウン
     #count_down_sec = 5
@@ -50,8 +54,7 @@ def graph_plt():
         text = data.decode('utf-8')
         st.write('ファイルの内容：', text)
 
-    st.title("STREAMLITのテストです５９")
-    st.write("📈　Line-Chart")
+    #st.write("📈　Line-Chart")
     UNOW=datetime.now()
     JST=timezone(timedelta(hours=+9))
     NOW=UNOW+timedelta(hours=+9)
@@ -85,6 +88,6 @@ def graph_plt():
         #additional_data = chart_data.iloc[100+i,:].T
         #line_chart.add_rows(additional_data)
         #time.sleep(0.001)
-    #st.line_chart(chart_data)
+    st.line_chart(chart_data)
 if __name__=='__main__':
     graph_plt()
