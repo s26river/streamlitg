@@ -42,15 +42,7 @@ def graph_plt():
                                "神奈川移動平均7日":dr07["神奈川県"],"神奈川移動平均28日":dr28["神奈川県"]})
     st.line_chart(chart_data)
     #st.table(chart_data)
-<<<<<<< HEAD
-<<<<<<< HEAD
-    st.text('Version 2.1')
-=======
-    st.text('Version 2.2')
->>>>>>> 282bc6bf9f7d42445e967ea3d4f5440e26710ade
-=======
-    st.text('Version 2.3')
->>>>>>> d4fc08cb623b848c9ebf94156d3ea54780162423
+    st.text('Version 2.5')
     # マークダウンテキスト
     #st.markdown('**Markdown is available **')
 
