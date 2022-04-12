@@ -8,7 +8,7 @@ from datetime import datetime,date,timedelta,timezone
 def graph_plt():
     
     """
-   #日本のコロナ感染者数推移
+    日本のコロナ感染者数推移
 
     """
     #st.title(f"{TITLE}")
