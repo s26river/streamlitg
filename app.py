@@ -106,7 +106,7 @@ def graph_plt():
     #b64 = base64.b64encode(csv.encode('utf-8-sig')).decode()
     #href = f'<a href="data:application/octet-stream;base64,{b64}" download="result_utf-8-sig.csv">Download Link</a>'
     #st.markdown(f"CSVファイルのダウンロード(utf-8 BOM):  {href}", unsafe_allow_html=True)
-    st.text('Version 1.3')
+    st.text('Version 1.4')
     # マークダウンテキスト
     st.markdown('**Markdown is available **')
 
