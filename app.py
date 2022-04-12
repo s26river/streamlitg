@@ -8,9 +8,9 @@ from datetime import datetime,date,timedelta,timezone
 def graph_plt():
     
     
-    TITLE=日本のコロナ感染者数推移
+    TITLE='日本のコロナ感染者数推移'
 
-    st.title(f"{TITLE}")
+    st.title(f'{TITLE}')
 
     #status_area = st.empty()
     # カウントダウン
