@@ -11,53 +11,7 @@ def graph_plt():
     TITLE='日本のコロナ感染者数推移'
 
     st.title(f'{TITLE}')
-
-    #status_area = st.empty()
-    # カウントダウン
-    #count_down_sec = 5
-    #for i in range(count_down_sec):
-        # プレースホルダーに残り秒数を書き込む
-        #status_area.write(f'あと{count_down_sec - i}秒 ')
-        # スリープ処理を入れる
-        #time.sleep(1)
-
-    # 完了したときの表示
-    #status_area.write('発射！！')
-    # 風船飛ばす
-    #st.balloons()
-
-    #status_text = st.empty()
-    # プログレスバー
-    #progress_bar = st.progress(0)
-
-    #for i in range(100):
-        #status_text.text(f'進捗は{i}パーセント')
-        # for ループ内でプログレスバーの状態を更新する
-        #progress_bar.progress(i + 1)
-        #time.sleep(0.1)
-
-    #status_text.text('完了！！')
-
-    # 折れ線グラフ (初期状態)
-    #x = np.random.random(size=(10, 2))
-    #line_chart = st.line_chart(x)
-
-    #for i in range(15):
-        # 折れ線グラフに 0.5 秒間隔で 15 回データを追加する
-        #additional_data = np.random.random(size=(5, 3))
-        #line_chart.add_rows(additional_data)
-        #time.sleep(0.5)
-
-    #f = st.file_uploader(label='ファイルのアップロード:')
-    #st.write('選択されたファイル: ', f)
-
-    #if f is not None:
-        # XXX: 信頼できないファイルは安易に評価しないこと
-        #data = f.getvalue()
-        #text = data.decode('utf-8')
-        #st.write('ファイルの内容：', text)
-
-    
+   
     UNOW=datetime.now()
     JST=timezone(timedelta(hours=+9))
     NOW=UNOW+timedelta(hours=+9)
@@ -86,29 +40,9 @@ def graph_plt():
     chart_data = pd.DataFrame({"全国移動平均7日":dr07["全国"],"全国移動平均28日":dr28["全国"],
                                "東京都移動平均7日":dr07["東京都"],"東京都移動平均28日":dr28["東京都"],
                                "神奈川移動平均7日":dr07["神奈川県"],"神奈川移動平均28日":dr28["神奈川県"]})
-    #chart_data = pd.DataFrame(dfpcd)
-    #折れ線グラフ (初期状態)
-    #line_chart = st.line_chart(chart_data.iloc[100, :].T)
-    #for i in range(1000):
-        #折れ線グラフに 0.5 秒間隔で 15 回データを追加する
-        #additional_data = chart_data.iloc[100+i,:].T
-        #line_chart.add_rows(additional_data)
-        #time.sleep(0.001)
     st.line_chart(chart_data)
-
-    #st.table(chart_data)
-    #csv = chart_data.to_csv(index=False)  
-
-    # utf-8
-    #b64 = base64.b64encode(csv.encode()).decode()
-    #href = f'<a href="data:application/octet-stream;base64,{b64}" download="result_utf-8.csv">Download Link</a>'
-    #st.markdown(f"CSVファイルのダウンロード(utf-8):  {href}", unsafe_allow_html=True)
-
-    # utf-8(BOM)
-    #b64 = base64.b64encode(csv.encode('utf-8-sig')).decode()
-    #href = f'<a href="data:application/octet-stream;base64,{b64}" download="result_utf-8-sig.csv">Download Link</a>'
-    #st.markdown(f"CSVファイルのダウンロード(utf-8 BOM):  {href}", unsafe_allow_html=True)
-    st.text('Version 1.7')
+    st.table(chart_data)
+    st.text('Version 1.8')
     # マークダウンテキスト
     st.markdown('**Markdown is available **')
 
