@@ -8,7 +8,7 @@ from datetime import datetime,date,timedelta,timezone
 def graph_plt():
     
     TITLE = "日本のコロナ感染者数推移"
-    st.title(f"{TITLE}")
+    #st.title(f"{TITLE}")
 
     #status_area = st.empty()
     # カウントダウン
@@ -106,7 +106,7 @@ def graph_plt():
     #b64 = base64.b64encode(csv.encode('utf-8-sig')).decode()
     #href = f'<a href="data:application/octet-stream;base64,{b64}" download="result_utf-8-sig.csv">Download Link</a>'
     #st.markdown(f"CSVファイルのダウンロード(utf-8 BOM):  {href}", unsafe_allow_html=True)
-    st.text('Version 1.5')
+    st.text('Version 1.6')
     # マークダウンテキスト
     st.markdown('**Markdown is available **')
 
