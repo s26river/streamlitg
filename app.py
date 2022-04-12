@@ -107,6 +107,8 @@ def graph_plt():
     #href = f'<a href="data:application/octet-stream;base64,{b64}" download="result_utf-8-sig.csv">Download Link</a>'
     #st.markdown(f"CSVファイルのダウンロード(utf-8 BOM):  {href}", unsafe_allow_html=True)
     st.text('Version 1.0')
+    # マークダウンテキスト
+    st.markdown('**Markdown is available **')
 
 if __name__=='__main__':
     graph_plt()
