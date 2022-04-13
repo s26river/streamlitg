@@ -31,7 +31,7 @@ def sake():
     df_areas_response = pd.DataFrame(areas_response["areas"])
     areas=df_areas_response['name'].values
     select_areas = st.sidebar.selectbox("好きな地域を選んでください", areas)
-    st.write(f"{select_areas}を選択"）
+    st.write(f"{select_areas}を選択")
     # 地域IDを取得
     areaId = [area["id"] for area in areas_response["areas"] if area["name"]==select_areas][0]
     #areaId = df['id']
