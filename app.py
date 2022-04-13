@@ -26,8 +26,10 @@ def sake():
     "銘柄ごとフレーバータグ": "https://muro.sakenowa.com/sakenowa-data/api/brand-flavor-tags",
     }
     # 地域名を取得
-    areas_response = requests.get(urls.get("地域一覧")).json()
-    areas = [area["name"] for area in areas_response["areas"]]
+    #areas_response = requests.get(urls.get("地域一覧")).json()
+    #areas = [area["name"] for area in areas_response["areas"]]
+    df_areas_response = pd.DataFrame(areas_response["areas"])
+    areas=df_areas_response['name'].values
     select_areas = st.sidebar.selectbox("好きな地域を選んでください", areas)
     # 地域IDを取得
     areaId = [area["id"] for area in areas_response["areas"] if area["name"]==select_areas][0]
