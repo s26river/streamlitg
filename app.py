@@ -4,13 +4,13 @@ import numpy as np
 import time
 from datetime import datetime,date,timedelta,timezone
 """
-# Python Streamlitライブラリのテスト
+# 日本のコロナ感染者数推移
 """
 
 def graph_plt(): 
     
-    TITLE='日本のコロナ感染者数推移'
-    st.title(f'{TITLE}')
+    #ILE='日本のコロナ感染者数推移'
+    #.title(f'{TITLE}')
    
     UNOW=datetime.now()
     JST=timezone(timedelta(hours=+9))
