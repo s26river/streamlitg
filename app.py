@@ -11,7 +11,7 @@ import plotly.express as px
 
 """
 ### 日本酒ソムリエ
-#### [さけのわAPI](https://sakenowa.com)のデータを表示しています 
+##### [さけのわAPI](https://sakenowa.com)のデータを表示しています 
 """
 def sake(): 
     
