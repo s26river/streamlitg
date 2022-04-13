@@ -38,7 +38,8 @@ def sake():
     areaId = df['id'][:47]
     # 蔵元名を取得
     breweries_response = requests.get(urls.get("蔵元一覧")).json()
-    breweries = [breweries["name"] for breweries in breweries_response["breweries"] if breweries["areaId"]==areaId]
+    #breweries = [breweries["name"] for breweries in breweries_response["breweries"] if breweries["areaId"]==areaId]
+    breweries = [breweries["name"] for breweries in breweries_response["breweries"]]
     select_breweries = st.sidebar.selectbox("好きな蔵元を選んでください", breweries)
     # 蔵元IDを取得
     breweryId = [breweries["id"] for breweries in breweries_response["breweries"] if breweries["name"]==select_breweries][0]
