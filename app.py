@@ -26,7 +26,7 @@ def sake():
     "銘柄ごとフレーバータグ": "https://muro.sakenowa.com/sakenowa-data/api/brand-flavor-tags",
     }
     # 地域名を取得
-    #areas_response = requests.get(urls.get("地域一覧")).json()
+    areas_response = requests.get(urls.get("地域一覧")).json()
     #areas = [area["name"] for area in areas_response["areas"]]
     df_areas_response = pd.DataFrame(areas_response["areas"])
     areas=df_areas_response['name'].values
