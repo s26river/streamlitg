@@ -10,8 +10,8 @@ import json
 import plotly.express as px
 
 """
-# 簡単日本酒選定アプリ
-## [さけのわAPI](https://sakenowa.com)のデータを表示しています 
+## 簡単日本酒選定アプリ
+### [さけのわAPI](https://sakenowa.com)のデータを表示しています 
 """
 def sake(): 
     
