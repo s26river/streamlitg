@@ -30,10 +30,12 @@ def sake():
     #areas = [area["name"] for area in areas_response["areas"]]
     #リスト内包表記をPANDASに変更
     areas_response = requests.get("https://muro.sakenowa.com/sakenowa-data/api/areas").json()['areas']
-    areas=pd.DataFrame(areas_response)['name']       
+    df=pd.DataFrame(areas_response)['name'].set_index('id')
+    areas=df['name']
     select_areas = st.sidebar.selectbox("好きな地域を選んでください", areas)
     # 地域IDを取得
-    areaId = [area["id"] for area in areas_response["areas"] if area["name"]==select_areas][0]
+    #areaId = [area["id"] for area in areas_response["areas"] if area["name"]==select_areas][0]
+    areaId = df['id']
     # 蔵元名を取得
     breweries_response = requests.get(urls.get("蔵元一覧")).json()
     breweries = [breweries["name"] for breweries in breweries_response["breweries"] if breweries["areaId"]==areaId]
@@ -46,7 +48,6 @@ def sake():
     select_brands = st.sidebar.selectbox("好きな銘柄を選んでください", brands)
     # 銘柄IDを取得
     brandId = [brands["id"] for brands in brands_response["brands"] if brands["name"]==select_brands][0]
-    
     # フレーバーチャートを取得
     flavor_charts_response = requests.get(urls.get("フレーバーチャート")).json()
     flavor_charts = [flavor_charts for flavor_charts in flavor_charts_response["flavorCharts"] if flavor_charts["brandId"]==brandId]
