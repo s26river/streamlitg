@@ -28,10 +28,6 @@ def sake():
     # 地域名を取得
     areas_response = requests.get(urls.get("地域一覧")).json()
     areas = [area["name"] for area in areas_response["areas"]]
-    #リスト内包表記をPANDASに変更
-    #areas_response = requests.get(urls.get("地域一覧")).json()['areas']
-    #df=pd.DataFrame(areas_response)
-    #areas=df['name']
     select_areas = st.sidebar.selectbox("好きな地域を選んでください", areas)
     # 地域IDを取得
     areaId = [area["id"] for area in areas_response["areas"] if area["name"]==select_areas][0]
@@ -39,7 +35,6 @@ def sake():
     # 蔵元名を取得
     breweries_response = requests.get(urls.get("蔵元一覧")).json()
     breweries = [breweries["name"] for breweries in breweries_response["breweries"] if breweries["areaId"]==areaId]
-    #breweries = [breweries["name"] for breweries in breweries_response["breweries"]]
     select_breweries = st.sidebar.selectbox("好きな蔵元を選んでください", breweries)
     # 蔵元IDを取得
     breweryId = [breweries["id"] for breweries in breweries_response["breweries"] if breweries["name"]==select_breweries][0]
