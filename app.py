@@ -29,7 +29,7 @@ def sake():
     #areas_response = requests.get(urls.get("地域一覧")).json()
     #areas = [area["name"] for area in areas_response["areas"]]
     #リスト内包表記をPANDASに変更
-    areas_response = requests.get("https://muro.sakenowa.com/sakenowa-data/api/areas").json()['areas']
+    areas_response = requests.get(urls.get("地域一覧")).json()['areas']
     df=pd.DataFrame(areas_response)
     areas=df['name']
     select_areas = st.sidebar.selectbox("好きな地域を選んでください", areas)
