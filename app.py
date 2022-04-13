@@ -3,13 +3,13 @@ import pandas as pd
 import numpy as np
 import time
 from datetime import datetime,date,timedelta,timezone
+"""
+マジックコマンド
+"""
 
-
-def graph_plt():
-    
+def graph_plt(): 
     
     TITLE='日本のコロナ感染者数推移'
-
     st.title(f'{TITLE}')
    
     UNOW=datetime.now()
