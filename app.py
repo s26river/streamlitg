@@ -32,7 +32,7 @@ def sake():
     select_areas = st.sidebar.selectbox("好きな地域を選んでください", areas)
     # 地域IDを取得
     areaId = [area["id"] for area in areas_response["areas"] if area["name"]==select_areas][0]
-　　# 蔵元名を取得
+    # 蔵元名を取得
     breweries_response = requests.get(urls.get("蔵元一覧")).json()
     breweries = [breweries["name"] for breweries in breweries_response["breweries"] if breweries["areaId"]==areaId]
     select_breweries = st.sidebar.selectbox("好きな蔵元を選んでください", breweries)
