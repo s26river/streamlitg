@@ -33,7 +33,6 @@ def graph_plt():
 ,'Toyama':'富山県','Wakayama':'和歌山県','Yamagata':'山形県','Yamaguchi':'山口県','Yamanashi':'山梨県'})
     TITLE="コロナ新規陽性者数（県別）移動平均28日"
     dfpcd=dfpc[dfpc.index >= '2020-07-07']
-    #dfpcd.to_excel(f'/content/drive/MyDrive/{TITLE}{STIME}.xlsx')
     dr=dfpcd.resample("7D").mean()
     dr07=dfpcd.rolling(window=7).mean()#移動平均7日
     dr28=dfpcd.rolling(window=28).mean()#移動平均28日
@@ -43,8 +42,10 @@ def graph_plt():
     
     if st.checkbox('折線グラフの表示'):
         st.line_chart(chart_data)
+    if st.checkbox('データの表示'):
+        st.dataframe(chart_data)
     #st.table(chart_data)
-    st.text('Version 2.7')
+    st.text('Version 3.0')
     # マークダウンテキスト
     #st.markdown('**Markdown is available **')
 
