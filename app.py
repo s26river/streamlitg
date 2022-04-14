@@ -82,7 +82,7 @@ def sake():
     
     #if st.button("ギャラリーの表示"):
     if st.checkbox('ギャラリーの表示'):
-        stc.ifram("STREAMLITG.html")
+        stc.iframe("https://docs.streamlit.io/en/stable/develop_streamlit_components.html",scrolling=True)
         
 if __name__=='__main__':
     sake()
