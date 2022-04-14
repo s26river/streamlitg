@@ -72,6 +72,7 @@ def sake():
             fig = px.line_polar(df, r=df[0], theta=df.index, line_close=True, range_r=[0,1])
             left_column, right_column = st.columns(2)
             left_column.plotly_chart(fig)
+            right_column.plotly_chart(fig)
             #st.plotly_chart(fig)
             st.write(f'[さけのわAPI](https://sakenowa.com)のデータを表示しています')
             # フレーバーチャートのデータがないものもあるので例外処理
