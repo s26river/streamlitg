@@ -19,9 +19,9 @@ st.write(f'<span style="color:maroon">日本酒ソムリエ</span>',unsafe_allow
 #image = Image.open('./sake.jpg')
 st.image('sake.jpg')
 
-"""
+#"""
 ###### [さけのわAPI](https://sakenowa.com)のデータを表示しています 
-"""
+#"""
 def sake(): 
     
     #st.write(f'<span style="color:red;background:pink">該当するデータがありません</span>',unsafe_allow_html=True)
@@ -70,6 +70,7 @@ def sake():
             df = df.rename(columns={'f1':'華やか', 'f2':'芳醇', 'f3':'重厚', 'f4':'穏やか', 'f5':'ドライ', 'f6':'軽快'}).T
             fig = px.line_polar(df, r=df[0], theta=df.index, line_close=True, range_r=[0,1])
             st.plotly_chart(fig)
+             st.write(f'[さけのわAPI](https://sakenowa.com)のデータを表示しています')
             # フレーバーチャートのデータがないものもあるので例外処理
         except:
             #st.markdown('## この銘柄はフレーバーチャートを表示できません！！')
