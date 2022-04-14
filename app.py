@@ -10,7 +10,7 @@ import requests
 import json
 import plotly.express as px
 
-st.write(f'<span style="color:maroon;font-weight:bold;font-size=20">日本酒ソムリエ</span>',unsafe_allow_html=True)
+st.write(f'<span style="color:maroon">日本酒ソムリエ</span>',unsafe_allow_html=True)
 #st.write('Streamlit is cool.')
 #st.text('Streamlit is cool.')
 #st.markdown('Streamlit is **_really_ cool**.')
