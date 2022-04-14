@@ -16,7 +16,7 @@ st.write(f'<span style="color:maroon">日本酒ソムリエ</span>',unsafe_allow
 #st.markdown('Streamlit is **_really_ cool**.')
 #stc.html("<p style='color:red;'> Streamlit is Awesome")
 #画像の表示
-#image = Image.open('./sake.jpg')
+#image = Image.open('./sake.jpg',use_column_width=True)
 st.image('sake.jpg')
 
 #"""
