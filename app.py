@@ -18,7 +18,7 @@ st.write(f'<span style="color:maroon">日本酒ソムリエ</span>',unsafe_allow
 #画像の表示
 #image = Image.open('./sake.jpg',use_column_width=True)
 #st.image('sake.jpg')
-num=3
+num=2
 lcol=[]
 col= st.beta_columns(num)
 for i in list(range(0,num,1)):
