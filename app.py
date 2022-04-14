@@ -81,8 +81,8 @@ def sake():
             st.write(f'<span style="color:red;background:pink">この銘柄はフレーバーチャートを表示できません！！</span>',unsafe_allow_html=True)
     
     #if st.button("ギャラリーの表示"):
-    #if st.checkbox('ギャラリーの表示'):
-    #    stc.html("STREAMLIT.html",height = 500)
+    if st.checkbox('ギャラリーの表示'):
+        stc.html("STREAMLITG.html",height = 500)
         
 if __name__=='__main__':
     sake()
