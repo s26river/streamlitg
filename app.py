@@ -21,7 +21,8 @@ st.write(f'<span style="color:maroon">日本酒ソムリエ</span>',unsafe_allow
 
 col1,col2= st.columns(2)
 
-col1.image("sake1.jpg", use_column_width=True)
+#col1.image("sake1.jpg", use_column_width=True)
+col1.image("zakoshi.gif", use_column_width=True)
 #col2.image("sake2.jpg", use_column_width=True)
 #col3.image("sake3.jpg", use_column_width=True)
 
