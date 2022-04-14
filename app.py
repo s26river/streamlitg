@@ -51,7 +51,8 @@ def sake():
     flavor_charts_response = requests.get(urls.get("フレーバーチャート")).json()
     flavor_charts = [flavor_charts for flavor_charts in flavor_charts_response["flavorCharts"] if flavor_charts["brandId"]==brandId]
     # plotlyでレーダーチャートを表示
-    st.markdown(f'## {select_brands}のフレーバーチャート')
+    #st.markdown(f'## {select_brands}のフレーバーチャート')
+    st.write(f'<span style="color:green"> {select_brands}</span>のフレーバーチャート',unsafe_allow_html=True)
     try:
         df = pd.DataFrame(flavor_charts)
         df = df.drop('brandId', axis=1)
