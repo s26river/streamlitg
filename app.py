@@ -9,7 +9,7 @@ import requests
 import json
 import plotly.express as px
 
-st.write(f'<span style="color:pink">日本酒ソムリエ</span>',unsafe_allow_html=True)
+st.write(f'<span style="color:pink;font-weight:bold;">日本酒ソムリエ</span>',unsafe_allow_html=True)
 """
 ###### [さけのわAPI](https://sakenowa.com)のデータを表示しています 
 """
