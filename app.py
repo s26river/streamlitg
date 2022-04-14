@@ -58,18 +58,19 @@ def sake():
     flavor_charts = [flavor_charts for flavor_charts in flavor_charts_response["flavorCharts"] if flavor_charts["brandId"]==brandId]
     # plotlyでレーダーチャートを表示
     #st.markdown(f'## {select_brands}のフレーバーチャート')
-    st.write(f'<span style="color:green"> {select_brands}</span>のフレーバーチャート',unsafe_allow_html=True)
-    try:
-        df = pd.DataFrame(flavor_charts)
-        df = df.drop('brandId', axis=1)
-        # 見やすくするためにカラム名を変更、その後plotlyで読み込めるようにデータを転置
-        df = df.rename(columns={'f1':'華やか', 'f2':'芳醇', 'f3':'重厚', 'f4':'穏やか', 'f5':'ドライ', 'f6':'軽快'}).T
-        fig = px.line_polar(df, r=df[0], theta=df.index, line_close=True, range_r=[0,1])
-        st.plotly_chart(fig)
-    # フレーバーチャートのデータがないものもあるので例外処理
-    except:
-        #st.markdown('## この銘柄はフレーバーチャートを表示できません！！')
-        st.write(f'<span style="color:red;background:pink">この銘柄はフレーバーチャートを表示できません！！</span>',unsafe_allow_html=True)
+    if st.checkbox('フレーバーチャートの表示'):
+        st.write(f'<span style="color:green"> {select_brands}</span>のフレーバーチャート',unsafe_allow_html=True)
+    　　try:
+            df = pd.DataFrame(flavor_charts)
+        　  df = df.drop('brandId', axis=1)
+            # 見やすくするためにカラム名を変更、その後plotlyで読み込めるようにデータを転置
+            df = df.rename(columns={'f1':'華やか', 'f2':'芳醇', 'f3':'重厚', 'f4':'穏やか', 'f5':'ドライ', 'f6':'軽快'}).T
+            fig = px.line_polar(df, r=df[0], theta=df.index, line_close=True, range_r=[0,1])
+            st.plotly_chart(fig)
+            # フレーバーチャートのデータがないものもあるので例外処理
+        except:
+            #st.markdown('## この銘柄はフレーバーチャートを表示できません！！')
+            st.write(f'<span style="color:red;background:pink">この銘柄はフレーバーチャートを表示できません！！</span>',unsafe_allow_html=True)
     
     #if st.button("ギャラリーの表示"):
     if st.checkbox('ギャラリーの表示'):
