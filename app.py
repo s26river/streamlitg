@@ -15,7 +15,7 @@ import plotly.express as px
 """
 def sake(): 
     
-    st.write(f'<span style="color:red;background:pink">該当するデータがありません</span>,unsafe_allow_html=True')
+    st.write('<span style="color:red;background:pink">該当するデータがありません</span>',unsafe_allow_html=True)
     # エンドポイント
     urls = {
     "地域一覧": "https://muro.sakenowa.com/sakenowa-data/api/areas",
