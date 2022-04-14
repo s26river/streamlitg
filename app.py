@@ -18,11 +18,12 @@ st.write(f'<span style="color:maroon">日本酒ソムリエ</span>',unsafe_allow
 #画像の表示
 #image = Image.open('./sake.jpg',use_column_width=True)
 #st.image('sake.jpg')
-num=2
+
 col1,col2,col3= st.columns(3)
-        col1.image("sake.jpg", use_column_width=True)
-        col2.image("sake.jpg", use_column_width=True)
-        col3.image("sake.jpg", use_column_width=True)
+
+col1.image("sake.jpg", use_column_width=True)
+col2.image("sake.jpg", use_column_width=True)
+col3.image("sake.jpg", use_column_width=True)
 
 #"""
 ###### [さけのわAPI](https://sakenowa.com)のデータを表示しています 
