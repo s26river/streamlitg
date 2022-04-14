@@ -22,7 +22,7 @@ st.image('sake.jpg')
 #"""
 ###### [さけのわAPI](https://sakenowa.com)のデータを表示しています 
 #"""
-@st.cache
+
 def sake(): 
     
     #st.write(f'<span style="color:red;background:pink">該当するデータがありません</span>',unsafe_allow_html=True)
