@@ -20,7 +20,7 @@ st.write(f'<span style="color:maroon">日本酒ソムリエ</span>',unsafe_allow
 #st.image('sake.jpg')
 num=2
 col= st.columns(num)
-for i in range(1,num+1)):
+for i in range(1,num+1):
     with col[i]:
         st.header("酒"+str(i+1))
         #st.image("sake" + "str(i+1)" + ".jpg", use_column_width=True)
