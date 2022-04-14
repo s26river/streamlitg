@@ -1,4 +1,5 @@
 import streamlit as st
+import streamlit.components.v1 as stc
 import pandas as pd
 import numpy as np
 import time
@@ -10,6 +11,11 @@ import json
 import plotly.express as px
 
 st.write(f'<span style="color:pink;font-weight:bold;">日本酒ソムリエ</span>',unsafe_allow_html=True)
+st.write('Streamlit is cool.')
+st.text('Streamlit is cool.')
+st.markdown('Streamlit is **_really_ cool**.')
+stc.html("<p style='color:red;'> Streamlit is Awesome")
+
 """
 ###### [さけのわAPI](https://sakenowa.com)のデータを表示しています 
 """
