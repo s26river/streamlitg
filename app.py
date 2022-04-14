@@ -82,7 +82,8 @@ def sake():
     
     #if st.button("ギャラリーの表示"):
     if st.checkbox('ギャラリーの表示'):
-        stc.html("""
+        stc.html(
+            """
         <!DOCTYPE html>
         <html>
         <head><!-- 裏設定エリアの開始 -->
@@ -92,8 +93,7 @@ def sake():
             わたしはもぐたんです。
         </body><!-- 画面に表示されるエリアの終了 -->
         </html>
-"""
-
+　　　　"""
         #stc.iframe("STREAMLITG.html")        
 if __name__=='__main__':
     sake()
