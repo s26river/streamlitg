@@ -9,8 +9,8 @@ import requests
 import json
 import plotly.express as px
 
+st.write(f'<span style="color:pink"> {select_brands}</span>日本酒ソムリエ',unsafe_allow_html=True)
 """
-### 日本酒ソムリエ
 ###### [さけのわAPI](https://sakenowa.com)のデータを表示しています 
 """
 def sake(): 
