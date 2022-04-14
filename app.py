@@ -58,7 +58,7 @@ def sake():
     flavor_charts = [flavor_charts for flavor_charts in flavor_charts_response["flavorCharts"] if flavor_charts["brandId"]==brandId]
     # plotlyでレーダーチャートを表示
     #st.markdown(f'## {select_brands}のフレーバーチャート')
-    if st.checkbox('フレーバーチャートの表示'):
+    if st.checkbox(f'{select_brands}のフレーバーチャートを表示'):
         st.write(f'<span style="color:green"> {select_brands}</span>のフレーバーチャート',unsafe_allow_html=True)
         try:
             df = pd.DataFrame(flavor_charts)
