@@ -60,7 +60,7 @@ def sake():
     #st.markdown(f'## {select_brands}のフレーバーチャート')
     if st.checkbox('フレーバーチャートの表示'):
         st.write(f'<span style="color:green"> {select_brands}</span>のフレーバーチャート',unsafe_allow_html=True)
-    　　try:
+        try:
             df = pd.DataFrame(flavor_charts)
         　  df = df.drop('brandId', axis=1)
             # 見やすくするためにカラム名を変更、その後plotlyで読み込めるようにデータを転置
