@@ -82,18 +82,18 @@ def sake():
     
     #if st.button("ギャラリーの表示"):
     if st.checkbox('ギャラリーの表示'):
-        #stc.html(
-        #    """
-        #    <!DOCTYPE html>
-        #    <html>
-        #    <head><!-- 裏設定エリアの開始 -->
-        #    <meta charset="utf-8"><!-- 文字化け防止 -->
-        #    </head><!-- 裏設定エリアの終了 -->
-        #    <body><!-- 画面に表示されるエリアの開始 -->
-        #    わたしはもぐたんです。
-        #    </body><!-- 画面に表示されるエリアの終了 -->
-        #    </html>
-        #    """)
-        stc.iframe("STREAMLITG.html",scrolling=True)
+        stc.html(
+            """
+            <!DOCTYPE html>
+            <html>
+            <head><!-- 裏設定エリアの開始 -->
+            <meta charset="utf-8"><!-- 文字化け防止 -->
+            </head><!-- 裏設定エリアの終了 -->
+            <body><!-- 画面に表示されるエリアの開始 -->
+            わたしはもぐたんです。
+            </body><!-- 画面に表示されるエリアの終了 -->
+            </html>
+            """)
+        #stc.iframe("STREAMLITG.html",scrolling=True)
 if __name__=='__main__':
     sake()
