@@ -70,8 +70,9 @@ def sake():
     except:
         #st.markdown('## この銘柄はフレーバーチャートを表示できません！！')
         st.write(f'<span style="color:red;background:pink">この銘柄はフレーバーチャートを表示できません！！</span>',unsafe_allow_html=True)
-        
-    stc.html("""
+    
+    if st.button("ギャラリーの表示"):
+        stc.html("""
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <style>
         * {
