@@ -82,7 +82,7 @@ def sake():
     
     #if st.button("ギャラリーの表示"):
     if st.checkbox('ギャラリーの表示'):
-        stc.ifram("STREAMLITG.html",height = 500)
+        stc.ifram("STREAMLITG.html")
         
 if __name__=='__main__':
     sake()
