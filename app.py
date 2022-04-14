@@ -94,6 +94,6 @@ def sake():
         #    </body><!-- 画面に表示されるエリアの終了 -->
         #    </html>
         #    """)
-        stc.iframe("STREAMLITG",scrolling=True)
+        stc.iframe("STREAMLITG.html",scrolling=True)
 if __name__=='__main__':
     sake()
