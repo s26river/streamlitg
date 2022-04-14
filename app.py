@@ -17,7 +17,14 @@ st.write(f'<span style="color:maroon">日本酒ソムリエ</span>',unsafe_allow
 #stc.html("<p style='color:red;'> Streamlit is Awesome")
 #画像の表示
 #image = Image.open('./sake.jpg',use_column_width=True)
-st.image('sake.jpg')
+#st.image('sake.jpg')
+#num=3
+#lcol=[]
+#col= st.beta_columns(num)
+#for i in list(range(0,num,1)):
+#    with col[i]:
+#        st.header("図"+str(i+1))
+#        st.image("sake"+"str(i+1)+".jpg", use_column_width=True)
 
 #"""
 ###### [さけのわAPI](https://sakenowa.com)のデータを表示しています 
