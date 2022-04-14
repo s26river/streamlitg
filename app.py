@@ -70,7 +70,9 @@ def sake():
             # 見やすくするためにカラム名を変更、その後plotlyで読み込めるようにデータを転置
             df = df.rename(columns={'f1':'華やか', 'f2':'芳醇', 'f3':'重厚', 'f4':'穏やか', 'f5':'ドライ', 'f6':'軽快'}).T
             fig = px.line_polar(df, r=df[0], theta=df.index, line_close=True, range_r=[0,1])
-            st.plotly_chart(fig)
+            left_column, right_column = st.columns(2)
+            left_column.plotly_chart(fig)
+            #st.plotly_chart(fig)
             st.write(f'[さけのわAPI](https://sakenowa.com)のデータを表示しています')
             # フレーバーチャートのデータがないものもあるので例外処理
         except:
