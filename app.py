@@ -23,8 +23,9 @@ lcol=[]
 col= st.beta_columns(num)
 for i in list(range(0,num,1)):
     with col[i]:
-        st.header("酒"+str(i+1))
-        st.image("sake" + "str(i+1)" + ".jpg", use_column_width=True)
+        #st.header("酒"+str(i+1))
+        #st.image("sake" + "str(i+1)" + ".jpg", use_column_width=True)
+        st.image("sake.jpg", use_column_width=True)
 
 #"""
 ###### [さけのわAPI](https://sakenowa.com)のデータを表示しています 
