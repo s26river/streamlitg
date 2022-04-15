@@ -12,9 +12,8 @@ import plotly.express as px
 
 st.write(f'<span style="color:maroon;font-size:xx-large;font-weight:bolder">日本酒ソムリエ</span>',unsafe_allow_html=True)
 
-col1,col2= st.columns(2)
-
-col1.image("sake1.jpg", use_column_width=True)
+#col1,col2= st.columns(2)
+#col1.image("sake1.jpg", use_column_width=True)
 #col1.image("zakoshi.gif", use_column_width=True)
 #col2.image("sake2.jpg", use_column_width=True)
 #col3.image("sake3.jpg", use_column_width=True)
@@ -125,6 +124,14 @@ def sake():
     brands_response = get_brands_response()
     brands = get_brands(breweryId).values
     select_brands = st.sidebar.selectbox("好きな銘柄を選んでください", brands)
+
+    #ここをコールバック関数で書きたい
+    #セレクトボックスとテキストボックスを比較して違ってたら、テキストボックスの内容を反映
+    text = st.text_input('選ぶお酒：',select_brands )
+    'あなたが選んだお酒は',text,'です。'
+    if select_brands !=  text:
+      select_brands = text    
+   
     # 銘柄IDを取得
     brandId = get_brandId(select_brands).values
     # フレーバーチャートを取得
@@ -132,7 +139,9 @@ def sake():
     flavor_charts = [flavor_charts for flavor_charts in flavor_charts_response["flavorCharts"] if flavor_charts["brandId"]==brandId]
     # plotlyでレーダーチャートを表示
     #st.markdown(f'## {select_brands}のフレーバーチャート')
-    if st.checkbox(f'{select_brands}のフレーバーチャートを表示'):
+    #if st.checkbox(f'{select_brands}のフレーバーチャートを表示'):
+    if st.button("フレーバーチャートを表示"):
+
         try:
             df = pd.DataFrame(flavor_charts)
             df = df.drop('brandId', axis=1)
@@ -147,4 +156,4 @@ def sake():
             st.write(f'<span style="color:red;background:pink">この銘柄はフレーバーチャートを表示できません！！</span>',unsafe_allow_html=True)
 
 if __name__=='__main__':
-    sake()
+      sake()
