@@ -81,6 +81,12 @@ def get_brands_response():
   brands_response = requests.get(urls.get("銘柄一覧")).json()
   return brands_response
 
+@st.cache 銘柄名をデータフレーム化
+def get_df_brands_response():
+  df_brands_response = pd.DataFrame(get_brands_response()['brands'])
+  return df_brands_response
+
+
 def sake(): 
 
     areas_response = get_areas_response()  #地域一覧(id,地域名)を取得
