@@ -121,7 +121,6 @@ def sake():
     select_brands = st.sidebar.selectbox("好きな銘柄を選んでください", brands)
     # 銘柄IDを取得
     brandId = get_brandId(select_brands).values
-    #brandId = [brands["id"] for brands in brands_response["brands"] if brands["name"]==select_brands][0]
     # フレーバーチャートを取得
     flavor_charts_response = requests.get(urls.get("フレーバーチャート")).json()
     flavor_charts = [flavor_charts for flavor_charts in flavor_charts_response["flavorCharts"] if flavor_charts["brandId"]==brandId]
