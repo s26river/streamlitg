@@ -55,7 +55,7 @@ def get_breweries_response():
   breweries_response = requests.get(urls.get("蔵元一覧")).json()
   return breweries_response
 
-#蔵元名,ID一覧をデータフレーム化 ※ＮＧ
+#蔵元名,ID一覧をデータフレーム化
 @st.cache
 def get_df_breweries():
   df_breweries = pd.DataFrame(get_breweries_response()['breweries'])
@@ -68,7 +68,7 @@ def get_df_breweries_ken(areaId):
   df_breweries_ken = df_breweries[df_breweries['areaId']==areaId]['name']
   return df_breweries_ken
 
-# 蔵元IDを取得
+# 蔵元IDを取得 ※NG
 @st.cache
 def get_breweryId(select_breweries):
   df_breweries = get_df_breweries()
