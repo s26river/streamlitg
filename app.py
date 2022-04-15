@@ -29,9 +29,14 @@ urls = {
 "フレーバータグ": "https://muro.sakenowa.com/sakenowa-data/api/flavor-tags",
 "銘柄ごとフレーバータグ": "https://muro.sakenowa.com/sakenowa-data/api/brand-flavor-tags"}
 
+#地域一覧を取得する関数　
+def get_areas_response():
+    areas_response = requests.get(urls.get("地域一覧")).json()
+    return areas_response
+
 #地域名を取得する関数pandas → 地域名一覧のセレクトボックス
 def get_select_areas():
-    areas_response = requests.get(urls.get("地域一覧")).json()
+    areas_response = get_areas_response()
     df_areas_response = pd.DataFrame(areas_response["areas"])
     areas = df_areas_response['name'].values
     select_areas = st.sidebar.selectbox("好きな地域を選んでください", areas)
