@@ -133,7 +133,6 @@ def sake():
     # plotlyでレーダーチャートを表示
     #st.markdown(f'## {select_brands}のフレーバーチャート')
     if st.checkbox(f'{select_brands}のフレーバーチャートを表示'):
-        #st.write(f'<span style="color:green"> {select_brands}</span>のフレーバーチャート',unsafe_allow_html=True)
         try:
             df = pd.DataFrame(flavor_charts)
             df = df.drop('brandId', axis=1)
@@ -147,7 +146,6 @@ def sake():
             st.write(f'[さけのわAPI](https://sakenowa.com)のデータを表示しています')
             # フレーバーチャートのデータがないものもあるので例外処理
         except:
-            #st.markdown('## この銘柄はフレーバーチャートを表示できません！！')
             st.write(f'<span style="color:red;background:pink">この銘柄はフレーバーチャートを表示できません！！</span>',unsafe_allow_html=True)
     
     #if st.button("ギャラリーの表示"):
