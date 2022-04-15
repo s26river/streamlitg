@@ -36,8 +36,6 @@ def get_select_areas():
     areas = df_areas_response['name'].values
     select_areas = st.sidebar.selectbox("好きな地域を選んでください", areas)
     return select_areas
-get_select_areas()
-
 def sake(): 
     #地域名を取得
     select_areas = get_select_areas() 
