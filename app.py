@@ -87,6 +87,12 @@ def get_df_brands_response():
   df_brands_response = pd.DataFrame(get_brands_response()['brands'])
   return df_brands_response
 
+#銘柄名の決定
+@st.cache
+def get_brands(breweryId):
+  df_brands_all = get_df_brands_response()
+  brands = df_brands_all[df_brands_all['breweryId']==breweryId]['name']
+  return brands
 
 def sake(): 
 
@@ -106,7 +112,8 @@ def sake():
     # 銘柄名を取得
     #brands_response = requests.get(urls.get("銘柄一覧")).json()
     brands_response = get_brands_response()
-    brands = [brands["name"] for brands in brands_response["brands"] if brands["breweryId"]==breweryId]
+    brands = get_brands(breweryId).values
+    #brands = [brands["name"] for brands in brands_response["brands"] if brands["breweryId"]==breweryId]
     select_brands = st.sidebar.selectbox("好きな銘柄を選んでください", brands)
     # 銘柄IDを取得
     brandId = [brands["id"] for brands in brands_response["brands"] if brands["name"]==select_brands][0]
