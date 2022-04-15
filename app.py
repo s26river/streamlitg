@@ -105,15 +105,11 @@ def sake():
     #breweries = get_df_breweries_ken(areaId)
     breweries = [breweries["name"] for breweries in breweries_response["breweries"] if breweries["areaId"]==areaId]
     select_breweries = st.sidebar.selectbox("好きな蔵元を選んでください", breweries)
-    # 蔵元IDを取得
+    # 蔵元IDを取得NG
     #breweryId = get_breweryId(select_breweries)
     breweryId = [breweries["id"] for breweries in breweries_response["breweries"] if breweries["name"]==select_breweries][0]
-    
     # 銘柄名を取得
-    #brands_response = requests.get(urls.get("銘柄一覧")).json()
-    brands_response = get_brands_response()
     brands = get_brands(breweryId).values
-    #brands = [brands["name"] for brands in brands_response["brands"] if brands["breweryId"]==breweryId]
     select_brands = st.sidebar.selectbox("好きな銘柄を選んでください", brands)
     # 銘柄IDを取得
     brandId = [brands["id"] for brands in brands_response["brands"] if brands["name"]==select_brands][0]
