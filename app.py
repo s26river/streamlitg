@@ -10,7 +10,7 @@ import requests
 import json
 import plotly.express as px
 
-st.write(f'<span style="color:maroon">日本酒ソムリエ</span>',unsafe_allow_html=True)
+st.write(f'<span style="color:maroon;font-size:xx-large;font-weight:bolder">日本酒ソムリエ</span>',unsafe_allow_html=True)
 
 col1,col2= st.columns(2)
 
