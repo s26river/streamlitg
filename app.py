@@ -151,12 +151,9 @@ def sake():
             """
             <!DOCTYPE html>
             <html>
-            <head><!-- 裏設定エリアの開始 -->
-            <meta charset="utf-8"><!-- 文字化け防止 -->
-            </head><!-- 裏設定エリアの終了 -->
-            <body><!-- 画面に表示されるエリアの開始 -->
-            わたしはもぐたんです。
-            </body><!-- 画面に表示されるエリアの終了 -->
+            <SCRIPT language=JavaScript type=text/javascript>
+            function year() {  var data = new Date();  var now_year = data.getFullYear();  document.write(now_year);  }
+            </SCRIPT>
             </html>
             """)
         #stc.iframe("STREAMLITG.html",scrolling=True)
