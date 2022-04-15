@@ -45,7 +45,8 @@ def sake():
     #地域名を取得
     select_areas = get_select_areas() 
     # 地域IDを取得
-    areaId = [area["id"] for area in areas_response["areas"] if area["name"]==select_areas][0]
+    #areaId = [area["id"] for area in areas_response["areas"] if area["name"]==select_areas][0]
+    areaId = [area["id"] for area in areas_response["areas"]
     #areaId = df['id']
     # 蔵元名を取得
     breweries_response = requests.get(urls.get("蔵元一覧")).json()
