@@ -11,13 +11,6 @@ import json
 import plotly.express as px
 
 st.write(f'<span style="color:maroon">日本酒ソムリエ</span>',unsafe_allow_html=True)
-#st.write('Streamlit is cool.')
-#st.text('Streamlit is cool.')
-#st.markdown('Streamlit is **_really_ cool**.')
-#stc.html("<p style='color:red;'> Streamlit is Awesome")
-#画像の表示
-#image = Image.open('./sake.jpg',use_column_width=True)
-#st.image('sake.jpg')
 
 col1,col2= st.columns(2)
 
@@ -26,14 +19,7 @@ col1.image("sake1.jpg", use_column_width=True)
 #col2.image("sake2.jpg", use_column_width=True)
 #col3.image("sake3.jpg", use_column_width=True)
 
-#"""
-###### [さけのわAPI](https://sakenowa.com)のデータを表示しています 
-#"""
-
-def sake(): 
-    
-    #st.write(f'<span style="color:red;background:pink">該当するデータがありません</span>',unsafe_allow_html=True)
-    # エンドポイント
+#エンドポイント
     urls = {
     "地域一覧": "https://muro.sakenowa.com/sakenowa-data/api/areas",
     "銘柄一覧": "https://muro.sakenowa.com/sakenowa-data/api/brands",
@@ -41,14 +27,20 @@ def sake():
     "ランキング": "https://muro.sakenowa.com/sakenowa-data/api/rankings",
     "フレーバーチャート": "https://muro.sakenowa.com/sakenowa-data/api/flavor-charts",
     "フレーバータグ": "https://muro.sakenowa.com/sakenowa-data/api/flavor-tags",
-    "銘柄ごとフレーバータグ": "https://muro.sakenowa.com/sakenowa-data/api/brand-flavor-tags",
-    }
-    # 地域名を取得
+    "銘柄ごとフレーバータグ": "https://muro.sakenowa.com/sakenowa-data/api/brand-flavor-tags"}
+
+#地域名を取得する関数pandas → 地域名一覧のセレクトボックス
+def get_select_areas():
     areas_response = requests.get(urls.get("地域一覧")).json()
-    #areas = [area["name"] for area in areas_response["areas"]]
     df_areas_response = pd.DataFrame(areas_response["areas"])
-    areas=df_areas_response['name'].values
+    areas = df_areas_response['name'].values
     select_areas = st.sidebar.selectbox("好きな地域を選んでください", areas)
+    return select_areas
+get_select_areas()
+
+def sake(): 
+    #地域名を取得
+    select_areas = get_select_areas() 
     # 地域IDを取得
     areaId = [area["id"] for area in areas_response["areas"] if area["name"]==select_areas][0]
     #areaId = df['id']
