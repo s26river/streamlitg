@@ -107,7 +107,6 @@ def get_flavor_charts_response():
   flavor_charts_response = requests.get(urls.get("フレーバーチャート")).json()
   return flavor_charts_response
 
-
 def sake(): 
 
     areas_response = get_areas_response()  #地域一覧(id,地域名)を取得
@@ -130,7 +129,6 @@ def sake():
     brandId = get_brandId(select_brands).values
     # フレーバーチャートを取得
     flavor_charts_response = get_flavor_charts_response()
-    #flavor_charts_response = requests.get(urls.get("フレーバーチャート")).json()    
     flavor_charts = [flavor_charts for flavor_charts in flavor_charts_response["flavorCharts"] if flavor_charts["brandId"]==brandId]
     # plotlyでレーダーチャートを表示
     #st.markdown(f'## {select_brands}のフレーバーチャート')
