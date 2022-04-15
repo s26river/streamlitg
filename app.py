@@ -45,7 +45,8 @@ def get_df_areas_response():
 def sake(): 
 
     areas_response = get_areas_response() #地域一覧(id,地域名)を取得
-    areas = get_df_areas_response()['name'].values #地域名一覧
+    df_areas_response=get_df_areas_response()
+    areas = df_areas_response['name'].values #地域名一覧
     select_areas = select_areas = st.sidebar.selectbox("好きな地域を選んでください", areas)
     
     # 地域IDを取得
