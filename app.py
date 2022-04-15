@@ -29,25 +29,31 @@ urls = {
 "フレーバータグ": "https://muro.sakenowa.com/sakenowa-data/api/flavor-tags",
 "銘柄ごとフレーバータグ": "https://muro.sakenowa.com/sakenowa-data/api/brand-flavor-tags"}
 
-#地域一覧(id,地域名)を取得する関数
+#地域一覧(id,地域名)を取得する関数→戻り値json
 @st.cache
 def get_areas_response():
     areas_response = requests.get(urls.get("地域一覧")).json()
     return areas_response
 
-#地域名を取得する関数pandas
+#地域名を取得する関数→戻り値pandas
 @st.cache
 def get_df_areas_response():
     areas_response = get_areas_response()
     df_areas_response = pd.DataFrame(areas_response["areas"])
     return df_areas_response
 
-#地域IDを取得
+#地域IDを取得する関数
 @st.cache
 def get_areaId(area):
   df_areas_response=get_df_areas_response()
   areaId = df_areas_response[df_areas_response['name'] == area]['id'].values
   return areaId
+
+#蔵元名,ID一覧を取得→戻り値json
+@st.cache
+def get_breweries_response():
+  breweries_response = requests.get(urls.get("蔵元一覧")).json()
+  return breweries_response
 
 def sake(): 
 
@@ -55,10 +61,8 @@ def sake():
     df_areas_response=get_df_areas_response()
     areas = df_areas_response['name'].values  #地域名一覧
     select_areas = select_areas = st.sidebar.selectbox("好きな地域を選んでください", areas)
-    areaId = get_areaId(select_areas) #地域IDを取得
-   
-    # 蔵元名を取得
-    breweries_response = requests.get(urls.get("蔵元一覧")).json()
+    areaId = get_areaId(select_areas) #地域IDを取得     
+    breweries_response = get_breweries_response()　 #蔵元名を取得
     breweries = [breweries["name"] for breweries in breweries_response["breweries"] if breweries["areaId"]==areaId]
     select_breweries = st.sidebar.selectbox("好きな蔵元を選んでください", breweries)
     # 蔵元IDを取得
