@@ -59,7 +59,7 @@ def get_breweries_response():
 @st.cache
 def get_df_breweries_ken(areaId):
   df_breweries = pd.DataFrame(get_breweries_response()['breweries']) #全国の蔵元
-  df_breweries_ken = df_breweries[df_breweries['areaId']==areaId]['name'] #選択した県の蔵元
+  df_breweries_ken = df_breweries[df_breweries['areaId']==areaId]['name'].values #選択した県の蔵元
   return df_breweries_ken
 
 def sake(): 
