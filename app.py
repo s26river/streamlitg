@@ -56,17 +56,24 @@ def get_breweries_response():
   return breweries_response
 
 #蔵元名,ID一覧をデータフレーム化
-#@st.cache
+@st.cache
 def get_df_breweries():
   df_breweries = pd.DataFrame(get_breweries_response()['breweries'])
   return df_breweries
 
 #選択した県の蔵元名
-#@st.cache
+@st.cache
 def get_df_breweries_ken(areaId):
   df_breweries = get_df_breweries()
   df_breweries_ken = df_breweries[df_breweries['areaId']==areaId]['name']
   return df_breweries_ken
+
+# 蔵元IDを取得
+@st.cache
+def get_breweryId(select_breweries):
+  df_breweries = get_df_breweries()
+  breweryId = df_breweries[df_breweries['name']==select_breweries]['id']
+  return breweryId
 
 def sake(): 
 
@@ -79,9 +86,9 @@ def sake():
     #breweries = get_df_breweries_ken(areaId)
     breweries = [breweries["name"] for breweries in breweries_response["breweries"] if breweries["areaId"]==areaId]
     select_breweries = st.sidebar.selectbox("好きな蔵元を選んでください", breweries)
-    
     # 蔵元IDを取得
-    breweryId = [breweries["id"] for breweries in breweries_response["breweries"] if breweries["name"]==select_breweries][0]
+    breweryId = get_breweryId(select_breweries)
+    #breweryId = [breweries["id"] for breweries in breweries_response["breweries"] if breweries["name"]==select_breweries][0]
     # 銘柄名を取得
     brands_response = requests.get(urls.get("銘柄一覧")).json()
     brands = [brands["name"] for brands in brands_response["brands"] if brands["breweryId"]==breweryId]
