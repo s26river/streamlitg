@@ -42,15 +42,21 @@ def get_df_areas_response():
     df_areas_response = pd.DataFrame(areas_response["areas"])
     return df_areas_response
 
+#地域IDを取得
+@st.cache
+def get_areaId(area):
+  df_areas_response=get_df_areas_response()
+  areaId = df_areas_response[df_areas_response['name'] == area]['id'].values
+  return areaId
+
 def sake(): 
 
-    areas_response = get_areas_response() #地域一覧(id,地域名)を取得
+    areas_response = get_areas_response()  #地域一覧(id,地域名)を取得
     df_areas_response=get_df_areas_response()
-    areas = df_areas_response['name'].values #地域名一覧
+    areas = df_areas_response['name'].values  #地域名一覧
     select_areas = select_areas = st.sidebar.selectbox("好きな地域を選んでください", areas)
-    
-    # 地域IDを取得
-    areaId = [area["id"] for area in areas_response["areas"] if area["name"]==select_areas][0]
+    areaId = get_areaId(select_areas) #地域IDを取得
+   
     # 蔵元名を取得
     breweries_response = requests.get(urls.get("蔵元一覧")).json()
     breweries = [breweries["name"] for breweries in breweries_response["breweries"] if breweries["areaId"]==areaId]
