@@ -94,6 +94,13 @@ def get_brands(breweryId):
   brands = df_brands_all[df_brands_all['breweryId']==breweryId]['name']
   return brands
 
+#銘柄IDの決定
+@st.cache
+def get_brandId(select_brands):
+    df_brands_all = get_df_brands_response()
+    brandId = df_brands_all[df_brands_all['name']==select_brands]['id']
+    return brandId
+
 def sake(): 
 
     areas_response = get_areas_response()  #地域一覧(id,地域名)を取得
@@ -113,7 +120,8 @@ def sake():
     brands = get_brands(breweryId).values
     select_brands = st.sidebar.selectbox("好きな銘柄を選んでください", brands)
     # 銘柄IDを取得
-    brandId = [brands["id"] for brands in brands_response["brands"] if brands["name"]==select_brands][0]
+    brandId = get_brandId(select_brands).values
+    #brandId = [brands["id"] for brands in brands_response["brands"] if brands["name"]==select_brands][0]
     # フレーバーチャートを取得
     flavor_charts_response = requests.get(urls.get("フレーバーチャート")).json()
     flavor_charts = [flavor_charts for flavor_charts in flavor_charts_response["flavorCharts"] if flavor_charts["brandId"]==brandId]
