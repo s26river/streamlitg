@@ -20,14 +20,14 @@ col1.image("sake1.jpg", use_column_width=True)
 #col3.image("sake3.jpg", use_column_width=True)
 
 #エンドポイント
-    urls = {
-    "地域一覧": "https://muro.sakenowa.com/sakenowa-data/api/areas",
-    "銘柄一覧": "https://muro.sakenowa.com/sakenowa-data/api/brands",
-    "蔵元一覧": "https://muro.sakenowa.com/sakenowa-data/api/breweries",
-    "ランキング": "https://muro.sakenowa.com/sakenowa-data/api/rankings",
-    "フレーバーチャート": "https://muro.sakenowa.com/sakenowa-data/api/flavor-charts",
-    "フレーバータグ": "https://muro.sakenowa.com/sakenowa-data/api/flavor-tags",
-    "銘柄ごとフレーバータグ": "https://muro.sakenowa.com/sakenowa-data/api/brand-flavor-tags"}
+urls = {
+"地域一覧": "https://muro.sakenowa.com/sakenowa-data/api/areas",
+"銘柄一覧": "https://muro.sakenowa.com/sakenowa-data/api/brands",
+"蔵元一覧": "https://muro.sakenowa.com/sakenowa-data/api/breweries",
+"ランキング": "https://muro.sakenowa.com/sakenowa-data/api/rankings",
+"フレーバーチャート": "https://muro.sakenowa.com/sakenowa-data/api/flavor-charts",
+"フレーバータグ": "https://muro.sakenowa.com/sakenowa-data/api/flavor-tags",
+"銘柄ごとフレーバータグ": "https://muro.sakenowa.com/sakenowa-data/api/brand-flavor-tags"}
 
 #地域名を取得する関数pandas → 地域名一覧のセレクトボックス
 def get_select_areas():
