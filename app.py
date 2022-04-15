@@ -142,13 +142,10 @@ def sake():
             left_column,mid,right_column = st.columns(3)
             left_column.plotly_chart(fig)
             #right_column.plotly_chart(fig)
-            #st.plotly_chart(fig)
             st.write(f'[さけのわAPI](https://sakenowa.com)のデータを表示しています')
-            # フレーバーチャートのデータがないものもあるので例外処理
         except:
             st.write(f'<span style="color:red;background:pink">この銘柄はフレーバーチャートを表示できません！！</span>',unsafe_allow_html=True)
-    
-    #if st.button("ギャラリーの表示"):
+   
     if st.checkbox('ギャラリーの表示'):
         stc.html(
             """
