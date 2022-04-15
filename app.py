@@ -109,6 +109,7 @@ def sake():
     #breweryId = get_breweryId(select_breweries)
     breweryId = [breweries["id"] for breweries in breweries_response["breweries"] if breweries["name"]==select_breweries][0]
     # 銘柄名を取得
+    brands_response = get_brands_response()
     brands = get_brands(breweryId).values
     select_brands = st.sidebar.selectbox("好きな銘柄を選んでください", brands)
     # 銘柄IDを取得
