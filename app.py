@@ -145,17 +145,6 @@ def sake():
             st.write(f'[さけのわAPI](https://sakenowa.com)のデータを表示しています')
         except:
             st.write(f'<span style="color:red;background:pink">この銘柄はフレーバーチャートを表示できません！！</span>',unsafe_allow_html=True)
-   
-    if st.checkbox('ギャラリーの表示'):
-        stc.html(
-            """
-            <!DOCTYPE html>
-            <html>
-            <SCRIPT language=JavaScript type=text/javascript>
-            function year() {  var data = new Date();  var now_year = data.getFullYear();  document.write(now_year);  }
-            </SCRIPT>
-            </html>
-            """)
-        #stc.iframe("STREAMLITG.html",scrolling=True)
+
 if __name__=='__main__':
     sake()
