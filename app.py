@@ -10,11 +10,11 @@ import requests
 import json
 import plotly.express as px
 
-st.write(f'<span style="color:maroon;font-size:xx-large;font-weight:bolder">日本酒ソムリエ</span>',unsafe_allow_html=True)
+st.write(f'<span style="color:maroon;font-size:xx-large;font-weight:bolder">日本酒AIソムリエ</span>',unsafe_allow_html=True)
 
-#col1,col2= st.columns(2)
-#col1.image("sake1.jpg", use_column_width=True)
-#col1.image("zakoshi.gif", use_column_width=True)
+col1,col2,col3= st.columns(3)
+col1.image("image/sake1.jpg", use_column_width=True)
+#col1.image("image/sake_tsugu.gif", use_column_width=True)
 #col2.image("sake2.jpg", use_column_width=True)
 #col3.image("sake3.jpg", use_column_width=True)
 
