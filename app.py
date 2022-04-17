@@ -10,7 +10,9 @@ import requests
 import json
 import plotly.express as px
 
-st.write(f'<span style="color:maroon;font-size:xx-large;font-weight:bolder">日本酒AIソムリエ</span>',unsafe_allow_html=True)
+#st.write(f'<span style="color:maroon;font-size:xx-large;font-weight:bolder">日本酒AIソムリエ</span>',unsafe_allow_html=True)
+st.write(f'<span style="font-size:xx-large;font-weight:bolder">日本酒AIソムリエ</span>',unsafe_allow_html=True)
+st.write(f'<span>[さけのわ様のAPI](https://sakenowa.com)を使用しています</span>',unsafe_allow_html=True)
 
 col1,col2,col3= st.columns(3)
 col1.image("image/sake1.jpg", use_column_width=True)
@@ -28,77 +30,12 @@ urls = {
 "フレーバータグ": "https://muro.sakenowa.com/sakenowa-data/api/flavor-tags",
 "銘柄ごとフレーバータグ": "https://muro.sakenowa.com/sakenowa-data/api/brand-flavor-tags"}
 
-#地域一覧(id,地域名)を取得する関数→戻り値json
+#データフレーム作成
 @st.cache
-def get_areas_response():
-    areas_response = requests.get(urls.get("地域一覧")).json()
-    return areas_response
-
-#地域名を取得する関数→戻り値pandas
-@st.cache
-def get_df_areas_response():
-    areas_response = get_areas_response()
-    df_areas_response = pd.DataFrame(areas_response["areas"])
-    return df_areas_response
-
-#地域IDを取得する関数
-@st.cache
-def get_areaId(area):
-  df_areas_response=get_df_areas_response()
-  areaId = df_areas_response[df_areas_response['name'] == area]['id'].values
-  return areaId
-
-#蔵元名,ID一覧を取得→戻り値json
-@st.cache
-def get_breweries_response():
-  breweries_response = requests.get(urls.get("蔵元一覧")).json()
-  return breweries_response
-
-#蔵元名,ID一覧をデータフレーム化
-@st.cache
-def get_df_breweries():
-  df_breweries = pd.DataFrame(get_breweries_response()['breweries'])
-  return df_breweries
-
-#選択した県の蔵元名　※ＮＧ
-@st.cache
-def get_df_breweries_ken(areaId):
-  df_breweries = get_df_breweries()
-  df_breweries_ken = df_breweries[df_breweries['areaId']==areaId]['name']
-  return df_breweries_ken
-
-# 蔵元IDを取得 ※NG
-@st.cache
-def get_breweryId(select_breweries):
-  df_breweries = get_df_breweries()
-  breweryId = df_breweries[df_breweries['name']==select_breweries]['id']
-  return breweryId
-
-#銘柄名を取得
-@st.cache
-def get_brands_response():
-  brands_response = requests.get(urls.get("銘柄一覧")).json()
-  return brands_response
-
-#銘柄名をデータフレーム化
-@st.cache
-def get_df_brands_response():
-  df_brands_response = pd.DataFrame(get_brands_response()['brands'])
-  return df_brands_response
-
-#銘柄名の決定
-@st.cache
-def get_brands(breweryId):
-  df_brands_all = get_df_brands_response()
-  brands = df_brands_all[df_brands_all['breweryId']==breweryId]['name']
-  return brands
-
-#銘柄IDの決定
-@st.cache
-def get_brandId(select_brands):
-    df_brands_all = get_df_brands_response()
-    brandId = df_brands_all[df_brands_all['name']==select_brands]['id']    
-    return brandId
+def get_df(urlname,key) :
+  dic = requests.get(urls.get(urlname)).json()
+  df = pd.DataFrame(dic[key]).set_index('id')
+  return df
 
 # フレーバーチャートを取得
 @st.cache
@@ -106,54 +43,46 @@ def get_flavor_charts_response():
   flavor_charts_response = requests.get(urls.get("フレーバーチャート")).json()
   return flavor_charts_response
 
-def sake(): 
+def sake():
 
-    areas_response = get_areas_response()  #地域一覧(id,地域名)を取得
-    df_areas_response=get_df_areas_response()
-    areas = df_areas_response['name'].values  #地域名一覧
-    select_areas = select_areas = st.sidebar.selectbox("好きな地域を選んでください", areas)
-    areaId = get_areaId(select_areas) #地域IDを取得    
-    breweries_response = get_breweries_response() #蔵元名一覧を取得
-    #breweries = get_df_breweries_ken(areaId)
-    breweries = [breweries["name"] for breweries in breweries_response["breweries"] if breweries["areaId"]==areaId]
-    select_breweries = st.sidebar.selectbox("好きな蔵元を選んでください", breweries)
-    # 蔵元IDを取得NG
-    #breweryId = get_breweryId(select_breweries)
-    breweryId = [breweries["id"] for breweries in breweries_response["breweries"] if breweries["name"]==select_breweries][0]
-    # 銘柄名を取得
-    brands_response = get_brands_response()
-    brands = get_brands(breweryId).values
-    select_brands = st.sidebar.selectbox("好きな銘柄を選んでください", brands)
+  df_area=get_df("地域一覧","areas")
+  areaId=st.sidebar.selectbox("好きな地域を選んでください",df_area.index.values,format_func=lambda x:df_area.loc[x,"name"])
 
-    #ここをコールバック関数で書きたい
-    #セレクトボックスとテキストボックスを比較して違ってたら、テキストボックスの内容を反映
-    text = st.text_input('選ぶお酒：',select_brands )
-    'あなたが選んだお酒は',text,'です。'
-    if select_brands !=  text:
-      select_brands = text    
-   
-    # 銘柄IDを取得
-    brandId = get_brandId(select_brands).values
-    # フレーバーチャートを取得
-    flavor_charts_response = get_flavor_charts_response()
-    flavor_charts = [flavor_charts for flavor_charts in flavor_charts_response["flavorCharts"] if flavor_charts["brandId"]==brandId]
-    # plotlyでレーダーチャートを表示
-    #st.markdown(f'## {select_brands}のフレーバーチャート')
-    #if st.checkbox(f'{select_brands}のフレーバーチャートを表示'):
-    if st.button("フレーバーチャートを表示"):
-
-        try:
-            df = pd.DataFrame(flavor_charts)
-            df = df.drop('brandId', axis=1)
-            # 見やすくするためにカラム名を変更、その後plotlyで読み込めるようにデータを転置
-            df = df.rename(columns={'f1':'華やか', 'f2':'芳醇', 'f3':'重厚', 'f4':'穏やか', 'f5':'ドライ', 'f6':'軽快'}).T
-            fig = px.line_polar(df, r=df[0], theta=df.index, line_close=True, range_r=[0,1],width=350,height=350)
-            left_column,mid,right_column = st.columns(3)
-            left_column.plotly_chart(fig)
-            #right_column.plotly_chart(fig)
-            st.write(f'[さけのわAPI](https://sakenowa.com)のデータを表示しています')
-        except:
-            st.write(f'<span style="color:red;background:pink">この銘柄はフレーバーチャートを表示できません！！</span>',unsafe_allow_html=True)
+  df=get_df("蔵元一覧","breweries")
+  df_brewery=df[df["areaId"]==areaId]
+  breweryId = st.sidebar.selectbox("好きな蔵元を選んでください",df_brewery.index.values,format_func=lambda x:df_brewery.loc[x,"name"])
+  
+  #銘柄名を取得
+  df=get_df("銘柄一覧","brands")
+  df_brand = df[df["breweryId"] == breweryId]["name"]
+  select_brands = st.sidebar.selectbox("好きな銘柄を選んでください",df_brand.values )
+  
+  #ここをコールバック関数で書きたい
+  #セレクトボックスとテキストボックスを比較して違ってたら、テキストボックスの内容を反映
+  text = st.text_input('選ぶお酒：',select_brands )
+  if select_brands !=  text:
+    select_brands = text
+  # 銘柄IDを取得
+  'あなたが選んだお酒は「',text,'」です。'
+  #銘柄IDを取得
+  brandId = df[df['name']==select_brands].index
+  # フレーバーチャートを取得
+  flavor_charts_response = get_flavor_charts_response()
+  flavor_charts = [flavor_charts for flavor_charts in flavor_charts_response["flavorCharts"] if flavor_charts["brandId"]==brandId]
+  # plotlyでレーダーチャートを表示
+  #st.markdown(f'## {select_brands}のフレーバーチャート')
+  #if st.checkbox(f'{select_brands}のフレーバーチャートを表示'):
+  if st.button("フレーバーチャートを表示"):
+    try:
+      df = pd.DataFrame(flavor_charts)
+      df = df.drop('brandId', axis=1)
+      # 見やすくするためにカラム名を変更、その後plotlyで読み込めるようにデータを転置
+      df = df.rename(columns={'f1':'華やか', 'f2':'芳醇', 'f3':'重厚', 'f4':'穏やか', 'f5':'ドライ', 'f6':'軽快'}).T
+      fig = px.line_polar(df, r=df[0], theta=df.index, line_close=True, range_r=[0,1],width=350,height=350)
+      left_column,mid,right_column = st.columns(3)
+      left_column.plotly_chart(fig)
+    except:
+      st.write(f'<span style="color:red;background:pink">この銘柄はフレーバーチャートを表示できません！！</span>',unsafe_allow_html=True)
 
 if __name__=='__main__':
       sake()
