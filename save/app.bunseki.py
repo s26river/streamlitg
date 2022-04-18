@@ -57,27 +57,25 @@ def sake():
   text = st.text_input('選ぶお酒：',select_brands )
   if select_brands !=  text:
     select_brands = text
-  # 銘柄IDを取得
   'あなたが選んだお酒は「',text,'」です。'
+ 
   #銘柄IDを取得
-  brandId = df[df['name']==select_brands].index
-  # フレーバーチャートを取得
-  flavor_charts_response = get_flavor_charts_response()
-  flavor_charts = [flavor_charts for flavor_charts in flavor_charts_response["flavorCharts"] if flavor_charts["brandId"]==brandId]
-  # plotlyでレーダーチャートを表示
-  #st.markdown(f'## {select_brands}のフレーバーチャート')
-  #if st.checkbox(f'{select_brands}のフレーバーチャートを表示'):
-  if st.button("フレーバーチャートを表示"):
-    try:
-      df = pd.DataFrame(flavor_charts)
-      df = df.drop('brandId', axis=1)
-      # 見やすくするためにカラム名を変更、その後plotlyで読み込めるようにデータを転置
-      df = df.rename(columns={'f1':'華やか', 'f2':'芳醇', 'f3':'重厚', 'f4':'穏やか', 'f5':'ドライ', 'f6':'軽快'}).T
-      fig = px.line_polar(df, r=df[0], theta=df.index, line_close=True, range_r=[0,1],width=350,height=350)
-      left_column,mid,right_column = st.columns(3)
-      left_column.plotly_chart(fig)
-    except:
-      st.write(f'<span style="color:red;background:pink">この銘柄はフレーバーチャートを表示できません！！</span>',unsafe_allow_html=True)
-
+  brandId = df[df['name']==select_brands].index.values[0]  
+  # plotlyでレーダーチャートを表示  
+  if st.button("味の分析"):
+      df_flavorCharts = pd.DataFrame(get_flavor_charts_response()["flavorCharts"])
+      df=df_flavorCharts[df_flavorCharts["brandId"]==brandId]
+      #データフレームが空か判定
+      if len(df) == 1:
+        df=df.drop('brandId', axis=1)
+        #見やすくするためにカラム名を変更、その後plotlyで読み込めるようにデータを転置
+        df=df.rename(columns={'f1':'華やか', 'f2':'芳醇', 'f3':'重厚', 'f4':'穏やか', 'f5':'ドライ', 'f6':'軽快'})
+        df
+        #fig = px.line_polar(df, r=df[0], theta=df.index, line_close=True, range_r=[0,1],width=350,height=350)
+        #left_column,mid,right_column = st.columns(3)
+        #left_column.plotly_chart(fig)
+      else:
+        st.write(f'<span style="color:red;background:pink">この銘柄は味の分析が出来ません！！</span>',unsafe_allow_html=True)
+        
 if __name__=='__main__':
       sake()
