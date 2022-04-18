@@ -68,9 +68,9 @@ def sake():
       #データフレームが空か判定
       if len(df) == 1:
         df=df.drop('brandId', axis=1)
-        df
         #見やすくするためにカラム名を変更、その後plotlyで読み込めるようにデータを転置
-        #df=df.rename(columns={'f1':'華やか', 'f2':'芳醇', 'f3':'重厚', 'f4':'穏やか', 'f5':'ドライ', 'f6':'軽快'}).T
+        df=df.rename(columns={'f1':'華やか', 'f2':'芳醇', 'f3':'重厚', 'f4':'穏やか', 'f5':'ドライ', 'f6':'軽快'})
+        df
         #fig = px.line_polar(df, r=df[0], theta=df.index, line_close=True, range_r=[0,1],width=350,height=350)
         #left_column,mid,right_column = st.columns(3)
         #left_column.plotly_chart(fig)
