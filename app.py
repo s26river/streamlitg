@@ -65,13 +65,12 @@ def sake():
   #フレーバーチャートを取得
   #flavor_charts_response = get_flavor_charts_response()
   #flavor_charts = [flavor_charts for flavor_charts in flavor_charts_response["flavorCharts"] if flavor_charts["brandId"]==brandId]
+  df_flavorCharts = pd.DataFrame(get_flavor_charts_response()["flavorCharts"])
+  df_flavorCharts
   # plotlyでレーダーチャートを表示
-  #st.markdown(f'## {select_brands}のフレーバーチャート')
-  #if st.checkbox(f'{select_brands}のフレーバーチャートを表示'):
   if st.button("フレーバーチャートを表示"):
     try:
-      #df = pd.DataFrame(flavor_charts)
-      df_flavorCharts = pd.DataFrame(get_flavor_charts_response()["flavorCharts"])
+      #df = pd.DataFrame(flavor_charts)      
       df = df_flavorCharts[df_flavorCharts["brandId"]==brandId]
       df = df.drop('brandId', axis=1)
       # 見やすくするためにカラム名を変更、その後plotlyで読み込めるようにデータを転置
