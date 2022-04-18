@@ -70,8 +70,9 @@ def sake():
   if st.button("フレーバーチャートを表示"):
     try:
       #df = pd.DataFrame(flavor_charts)
-      #'ブランドＩＤ ',brandId.to_numpy()      
-      df_flavorCharts[df_flavorCharts["brandId"]==brandId]
+      #'ブランドＩＤ ',brandId.to_numpy()
+      brandId
+      #df_flavorCharts[df_flavorCharts["brandId"]==brandId]
       #df = df.drop('brandId', axis=1)
       #df
       # 見やすくするためにカラム名を変更、その後plotlyで読み込めるようにデータを転置
