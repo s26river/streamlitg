@@ -67,6 +67,7 @@ def sake():
       df=df_flavorCharts[df_flavorCharts["brandId"]==brandId]
       #データフレームが空か判定
       if len(df) == 1:
+        df
         df=df.drop('brandId', axis=1)
         #見やすくするためにカラム名を変更、その後plotlyで読み込めるようにデータを転置
         df=df.rename(columns={'f1':'華やか', 'f2':'芳醇', 'f3':'重厚', 'f4':'穏やか', 'f5':'ドライ', 'f6':'軽快'}).T
@@ -74,6 +75,7 @@ def sake():
         left_column,mid,right_column = st.columns(3)
         left_column.plotly_chart(fig)
       else:
+        df
         st.write(f'<span style="color:red;background:pink">この銘柄はフレーバーチャートを表示できません！！</span>',unsafe_allow_html=True)
         
 if __name__=='__main__':
