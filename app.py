@@ -70,17 +70,17 @@ def sake():
   if st.button("フレーバーチャートを表示"):
     try:
       #df = pd.DataFrame(flavor_charts)
-      'ブランドＩＤ',brandId
+      'ブランドＩＤ',brandId.value
       #df_flavorCharts
       #df = df_flavorCharts[df_flavorCharts["brandId"]==brandId]
       #df
       #df = df.drop('brandId', axis=1)
       #df
       # 見やすくするためにカラム名を変更、その後plotlyで読み込めるようにデータを転置
-      df = df.rename(columns={'f1':'華やか', 'f2':'芳醇', 'f3':'重厚', 'f4':'穏やか', 'f5':'ドライ', 'f6':'軽快'}).T
-      fig = px.line_polar(df, r=df[0], theta=df.index, line_close=True, range_r=[0,1],width=350,height=350)
-      left_column,mid,right_column = st.columns(3)
-      left_column.plotly_chart(fig)
+      #df = df.rename(columns={'f1':'華やか', 'f2':'芳醇', 'f3':'重厚', 'f4':'穏やか', 'f5':'ドライ', 'f6':'軽快'}).T
+      #fig = px.line_polar(df, r=df[0], theta=df.index, line_close=True, range_r=[0,1],width=350,height=350)
+      #left_column,mid,right_column = st.columns(3)
+      #left_column.plotly_chart(fig)
     except:
       st.write(f'<span style="color:red;background:pink">この銘柄はフレーバーチャートを表示できません！！</span>',unsafe_allow_html=True)
 
