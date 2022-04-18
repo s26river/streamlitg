@@ -73,7 +73,7 @@ def sake():
       #'ブランドＩＤ ',brandId.to_numpy()
       #df_flavorCharts
       #brandId
-      df = df_flavorCharts[df_flavorCharts["brandId"]==brandId]
+      df = df_flavorCharts[df_flavorCharts["brandId"]==brandId.values]
       #df
       #df = df.drop('brandId', axis=1)
       #df
