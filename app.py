@@ -11,8 +11,8 @@ import json
 import plotly.express as px
 
 st.write(f'<span style="font-size:xx-large;font-weight:bolder">日本酒AIソムリエ</span>',unsafe_allow_html=True)
-col1,col2,col3= st.columns(3)
-col1.image("image/sake1.jpg", use_column_width=True)
+#col1,col2,col3= st.columns(3)
+#col1.image("image/sake1.jpg", use_column_width=True)
 st.write(f'<span style="font-size:small">[さけのわ様のAPI](https://sakenowa.com)を使用しています</span>',unsafe_allow_html=True)
 
 #エンドポイント
@@ -64,9 +64,8 @@ def sake():
   # フレーバーチャートを取得
   flavor_charts_response = get_flavor_charts_response()
   flavor_charts = [flavor_charts for flavor_charts in flavor_charts_response["flavorCharts"] if flavor_charts["brandId"]==brandId]
+  
   # plotlyでレーダーチャートを表示
-  #st.markdown(f'## {select_brands}のフレーバーチャート')
-  #if st.checkbox(f'{select_brands}のフレーバーチャートを表示'):
   if st.button("フレーバーチャートを表示"):
     try:
       df = pd.DataFrame(flavor_charts)
