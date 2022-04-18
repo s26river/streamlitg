@@ -71,7 +71,7 @@ def sake():
     try:
       #df = pd.DataFrame(flavor_charts)      
       df = df_flavorCharts[df_flavorCharts["brandId"]==brandId]
-      df = df.drop('brandId', axis=1)
+      #df = df.drop('brandId', axis=1)
       df
       # 見やすくするためにカラム名を変更、その後plotlyで読み込めるようにデータを転置
       df = df.rename(columns={'f1':'華やか', 'f2':'芳醇', 'f3':'重厚', 'f4':'穏やか', 'f5':'ドライ', 'f6':'軽快'}).T
