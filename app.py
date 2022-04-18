@@ -60,7 +60,7 @@ def sake():
   # 銘柄IDを取得
   'あなたが選んだお酒は「',text,'」です。'
   #銘柄IDを取得
-  brandId = df[df['name']==select_brands].index.astype(int)
+  brandId = df[df['name']==select_brands].index.value
   
   #フレーバーチャートを取得
   #flavor_charts_response = get_flavor_charts_response()
