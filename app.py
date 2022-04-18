@@ -72,9 +72,9 @@ def sake():
       #df = pd.DataFrame(flavor_charts)
       #'ブランドＩＤ ',brandId.to_numpy()
       #df_flavorCharts
-      brandId
-      brandId_type=type(brandId)
-      brandId_type
+      brandId.values
+      #brandId_type=type(brandId)
+      #brandId_type
       #df = df_flavorCharts[df_flavorCharts["brandId"]==brandId.values]
       #df
       #df = df.drop('brandId', axis=1)
