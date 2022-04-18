@@ -73,7 +73,7 @@ def sake():
       #'ブランドＩＤ ',brandId.to_numpy()
       brandId=brandId[0]
       brandId
-      #df_flavorCharts[df_flavorCharts["brandId"]==brandId]
+      df_flavorCharts[df_flavorCharts["brandId"]==brandId]
       #df = df.drop('brandId', axis=1)
       #df
       # 見やすくするためにカラム名を変更、その後plotlyで読み込めるようにデータを転置
