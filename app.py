@@ -61,15 +61,18 @@ def sake():
   'あなたが選んだお酒は「',text,'」です。'
   #銘柄IDを取得
   brandId = df[df['name']==select_brands].index
-  # フレーバーチャートを取得
-  flavor_charts_response = get_flavor_charts_response()
-  flavor_charts = [flavor_charts for flavor_charts in flavor_charts_response["flavorCharts"] if flavor_charts["brandId"]==brandId]
+  
+  #フレーバーチャートを取得
+  #flavor_charts_response = get_flavor_charts_response()
+  #flavor_charts = [flavor_charts for flavor_charts in flavor_charts_response["flavorCharts"] if flavor_charts["brandId"]==brandId]
   # plotlyでレーダーチャートを表示
   #st.markdown(f'## {select_brands}のフレーバーチャート')
   #if st.checkbox(f'{select_brands}のフレーバーチャートを表示'):
   if st.button("フレーバーチャートを表示"):
     try:
-      df = pd.DataFrame(flavor_charts)
+      #df = pd.DataFrame(flavor_charts)
+      df_flavorCharts = pd.DataFrame(get_flavor_charts_response()["flavorCharts"])
+      df = df_flavorCharts[df_flavorCharts["brandId"]==brandId]
       df = df.drop('brandId', axis=1)
       # 見やすくするためにカラム名を変更、その後plotlyで読み込めるようにデータを転置
       df = df.rename(columns={'f1':'華やか', 'f2':'芳醇', 'f3':'重厚', 'f4':'穏やか', 'f5':'ドライ', 'f6':'軽快'}).T
