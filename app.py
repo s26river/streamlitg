@@ -70,8 +70,8 @@ def sake():
   if st.button("フレーバーチャートを表示"):
     try:
       #df = pd.DataFrame(flavor_charts)
-      df_flavorCharts
       'ブランドＩＤ',brandId.value
+      #df_flavorCharts
       #df = df_flavorCharts[df_flavorCharts["brandId"]==brandId]
       #df
       #df = df.drop('brandId', axis=1)
