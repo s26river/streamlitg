@@ -39,10 +39,9 @@ def get_flavor_charts_response():
 
 #ランキングデータフレーム作成
 #@st.cache
-def get_rank(urlname,key,brandId):
+def get_rank(urlname,key):
   rank_response = requests.get(urls.get(urlname)).json()
   df_rank=pd.DataFrame(rank_response[key])
-  df_rank=df_rank[df_rank['brandId']==brandId]
   return df_rank
 
 def sake():
@@ -85,10 +84,9 @@ def sake():
     except:
       st.write(f'<span style="color:red;background:pink">この銘柄はフレーバーチャートを表示できません！！</span>',unsafe_allow_html=True)
     
-    df_rank=get_rank('ランキング','overall',brandId)
-    df_rank
-    #rank=df_rank['rank']
-    #rank
+    df=get_rank('ランキング','overall')
+    rank=df_rank['rank'].query('"brandId"==@brandId').values
+    rank
     #st.write(f'<span style="font-size:small">全国ランキング{rank}位</span>',unsafe_allow_html=True)
   
 if __name__=='__main__':
