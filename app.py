@@ -20,7 +20,9 @@ urls = {
 "地域一覧": "https://muro.sakenowa.com/sakenowa-data/api/areas",
 "銘柄一覧": "https://muro.sakenowa.com/sakenowa-data/api/brands",
 "蔵元一覧": "https://muro.sakenowa.com/sakenowa-data/api/breweries",
-"フレーバーチャート": "https://muro.sakenowa.com/sakenowa-data/api/flavor-charts"}
+"フレーバーチャート": "https://muro.sakenowa.com/sakenowa-data/api/flavor-charts",
+"ランキング": "https://muro.sakenowa.com/sakenowa-data/api/rankings"
+}
 
 #データフレーム作成
 @st.cache
@@ -34,6 +36,13 @@ def get_df(urlname,key) :
 def get_flavor_charts_response():
   flavor_charts_response = requests.get(urls.get("フレーバーチャート")).json()
   return flavor_charts_response
+
+#ランキングデータフレーム作成
+@st.cache
+def get_rank(urlname,key,brandId):
+  rank_response = requests.get(urls.get(urlname)).json()
+  df_rank=pd.DataFrame(rank_response[key]).query('brandId==@brandId')
+  return df_rank
 
 def sake():
 
@@ -74,8 +83,10 @@ def sake():
       left_column.plotly_chart(fig)
     except:
       st.write(f'<span style="color:red;background:pink">この銘柄はフレーバーチャートを表示できません！！</span>',unsafe_allow_html=True)
-    'ランキング'
-    df_overall.query('brandId==@brandId')
-      
+    
+    df_rank=get_rank('ランキング','overall',brandId)
+    rank=df_rank['rank'].values[0]
+    st.write(f'<span style="font-size:small">全国ランキング{rank}位</span>',unsafe_allow_html=True)
+  
 if __name__=='__main__':
       sake()
