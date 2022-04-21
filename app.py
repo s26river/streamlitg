@@ -74,6 +74,8 @@ def sake():
       left_column.plotly_chart(fig)
     except:
       st.write(f'<span style="color:red;background:pink">この銘柄はフレーバーチャートを表示できません！！</span>',unsafe_allow_html=True)
+    'ランキング'
+    df_overall.query('brandId==@brandId')
       
 if __name__=='__main__':
       sake()
