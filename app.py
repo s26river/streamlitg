@@ -42,7 +42,7 @@ def get_flavor_charts_response():
 def get_rank(urlname,key,brandId):
   rank_response = requests.get(urls.get(urlname)).json()
   df_rank=pd.DataFrame(rank_response[key])
-  df_rank=df_rank.query('brandId==@brandId')
+  df_rank=df_rank[df_rank['brandId']==brandId)
   return df_rank
 
 def sake():
