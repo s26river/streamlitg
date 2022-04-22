@@ -94,13 +94,13 @@ def sake():
       st.write(f'<span style="color:red;background:pink">この銘柄はランキングを表示できません！！</span>',unsafe_allow_html=True)
       
    if st.checkbox("県内ランキングを表示") :
-    try:
+     try:
       #ランキングデータフレーム
       brandId=brandId.values[0]
       ranking=get_rank('ランキング','',brandId)
       st.write(f'<span style="font-size:medium">「{text}」の同県内でのランキングは{ranking}位です。</span>',unsafe_allow_html=True)
-    except:
+     except:
       st.write(f'<span style="color:red;background:pink">この銘柄はランキングを表示できません！！</span>',unsafe_allow_html=True)
-  
+      
 if __name__=='__main__':
       sake()
