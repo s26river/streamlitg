@@ -37,13 +37,6 @@ def get_flavor_charts_response():
   flavor_charts_response = requests.get(urls.get("フレーバーチャート")).json()
   return flavor_charts_response
 
-#ランキングデータフレーム作成
-#@st.cache
-def get_rank(urlname,key):
-  rank_response = requests.get(urls.get(urlname)).json()
-  df_rank=pd.DataFrame(rank_response[key])
-  return df_rank
-
 def sake():
 
   df_area=get_df("地域一覧","areas")
@@ -83,8 +76,10 @@ def sake():
       left_column.plotly_chart(fig)
     except:
       st.write(f'<span style="color:red;background:pink">この銘柄はフレーバーチャートを表示できません！！</span>',unsafe_allow_html=True)
-    
-    df_rank=get_rank('ランキング','overall')
+      
+    #ランキングデータフレーム作成
+    rank_response = requests.get(urls.get(urlname)).json()
+    df_rank=pd.DataFrame(rank_response['overall'])     
     rank=df_rank[df_rank['brandId']==brandId]
     rank
    
