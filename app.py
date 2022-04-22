@@ -78,7 +78,7 @@ def sake():
       st.write(f'<span style="color:red;background:pink">この銘柄はフレーバーチャートを表示できません！！</span>',unsafe_allow_html=True)
       
     #ランキングデータフレーム作成
-    brandId
+    brandId=brandId.values[0]
     rank_response = requests.get(urls.get("ランキング")).json()
     df_rank=pd.DataFrame(rank_response['overall'])
     ranking=df_rank.query('brandId==@brandId')
