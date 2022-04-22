@@ -71,7 +71,7 @@ def sake():
   flavor_charts_response = get_flavor_charts_response()
   flavor_charts = [flavor_charts for flavor_charts in flavor_charts_response["flavorCharts"] if flavor_charts["brandId"]==brandId]
   # plotlyでレーダーチャートを表示
-  if st.button("フレーバーチャートを表示"):
+  if st.checkbox("フレーバーチャートを表示"):
     try:
       df = pd.DataFrame(flavor_charts)
       df = df.drop('brandId', axis=1)
