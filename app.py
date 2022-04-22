@@ -72,7 +72,7 @@ def sake():
   flavor_charts = [flavor_charts for flavor_charts in flavor_charts_response["flavorCharts"] if flavor_charts["brandId"]==brandId]
   
   # plotlyでレーダーチャートを表示
-  if st.checkbox("フレーバーチャートを表示",value=False) :
+  if st.checkbox("フレーバーチャートを表示",value=Ture) :
     try:
       df = pd.DataFrame(flavor_charts)
       df = df.drop('brandId', axis=1)
@@ -84,7 +84,7 @@ def sake():
     except:
       st.write(f'<span style="color:red;background:pink">この銘柄はフレーバーチャートを表示できません！！</span>',unsafe_allow_html=True)  
 
-  if st.checkbox("全国ランキングを表示",value=False) :
+  if st.checkbox("全国ランキングを表示",value=Ture) :
     try:
       #ランキングデータフレーム
       brandId=brandId.values[0]
