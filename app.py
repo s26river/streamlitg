@@ -83,7 +83,7 @@ def sake():
     except:
       st.write(f'<span style="color:red;background:pink">この銘柄はフレーバーチャートを表示できません！！</span>',unsafe_allow_html=True)
   
-  if st.button("全国ランキングを表示"):
+  if st.checkbox("全国ランキングを表示"):
     try:
       #ランキングデータフレーム
       brandId=brandId.values[0]
