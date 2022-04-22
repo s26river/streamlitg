@@ -37,6 +37,12 @@ def get_flavor_charts_response():
   flavor_charts_response = requests.get(urls.get("フレーバーチャート")).json()
   return flavor_charts_response
 
+#ランキング取得
+def get_rank(urlname,key,brandId):
+    rank_response = requests.get(urls.get(urlname)).json()
+    ranking=pd.DataFrame(rank_response[key]).query('brandId==@brandId')['rank'].values[0]
+    return ranking
+
 def sake():
 
   df_area=get_df("地域一覧","areas")
@@ -79,12 +85,8 @@ def sake():
       
     #ランキングデータフレーム作成
     brandId=brandId.values[0]
-    rank_response = requests.get(urls.get("ランキング")).json()
-    df_rank=pd.DataFrame(rank_response['overall'])
-    ranking=df_rank.query('brandId==@brandId')
-    ranking
-   
-    ##st.write(f'<span style="font-size:small">全国ランキング{rank}位</span>',unsafe_allow_html=True)
+    ranking=get_rank('ランキング','overall',brandId)   
+    st.write(f'<span style="font-size:small">全国ランキング{rank}位</span>',unsafe_allow_html=True)
   
 if __name__=='__main__':
       sake()
