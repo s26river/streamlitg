@@ -81,7 +81,7 @@ def sake():
       left_column,mid,right_column = st.columns(3)
       left_column.plotly_chart(fig)
       
-      if st.checkbox('全国ランキングの表示'):
+      if st.checkbox('全国ランキングの表示') == True:
         try:
           #ランキングデータフレーム
           brandId=brandId.values[0]
