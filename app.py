@@ -80,17 +80,18 @@ def sake():
       fig = px.line_polar(df, r=df[0], theta=df.index, line_close=True, range_r=[0,1],width=350,height=350)
       left_column,mid,right_column = st.columns(3)
       left_column.plotly_chart(fig)
+      
+      if st.checkbox('全国ランキングの表示'):
+        try:
+          #ランキングデータフレーム作成
+      　 brandId=brandId.values[0]
+      　 ranking=get_rank('ランキング','overall',brandId)   
+      　 st.write(f'<span style="font-size:medium">「{text}」の全国ランキングは{ranking}位です。</span>',unsafe_allow_html=True)
+    　  except:
+      　 st.write(f'<span style="color:red;background:pink">この銘柄はランキングを表示できません！！</span>',unsafe_allow_html=True)
+        
     except:
       st.write(f'<span style="color:red;background:pink">この銘柄はフレーバーチャートを表示できません！！</span>',unsafe_allow_html=True)
-    
-    if st.checkbox('全国ランキングの表示'):
-      try:
-      　#ランキングデータフレーム作成
-      　brandId=brandId.values[0]
-      　ranking=get_rank('ランキング','overall',brandId)   
-      　st.write(f'<span style="font-size:medium">「{text}」の全国ランキングは{ranking}位です。</span>',unsafe_allow_html=True)
-    　except:
-      　st.write(f'<span style="color:red;background:pink">この銘柄はランキングを表示できません！！</span>',unsafe_allow_html=True)
   
 if __name__=='__main__':
       sake()
