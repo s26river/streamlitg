@@ -88,7 +88,7 @@ def sake():
     rank=df_rank[df_rank['brandId']==brandId]
     rank
    
-    #st.write(f'<span style="font-size:small">全国ランキング{rank}位</span>',unsafe_allow_html=True)
+    ##st.write(f'<span style="font-size:small">全国ランキング{rank}位</span>',unsafe_allow_html=True)
   
 if __name__=='__main__':
       sake()
