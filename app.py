@@ -104,7 +104,6 @@ def sake():
   if st.checkbox("県内ランキングを表示") :
     try:
       #ランキングデータフレーム
-      #areaId=areaId.values[0]
       ken_ranking=get_ken_rank('ランキング','areas',areaId,brandId)
       st.write(f'<span style="font-size:medium">「{text}」の同県内でのランキングは{ken_ranking}位です。</span>',unsafe_allow_html=True)
     except:
