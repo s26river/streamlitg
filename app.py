@@ -74,7 +74,7 @@ def sake():
   # plotlyでレーダーチャートを表示
   checkbox_sts1 = False
   checkbox_sts1 = st.checkbox("フレーバーチャートを表示")
-  if checkbox_sts1 = st.checkbox:
+  if checkbox_sts1 :
     try:
       df = pd.DataFrame(flavor_charts)
       df = df.drop('brandId', axis=1)
@@ -88,7 +88,7 @@ def sake():
   
   checkbox_sts2 = False
   checkbox_sts2 = st.checkbox("全国ランキングを表示")
-  if checkbox_sts2:
+  if checkbox_sts2 :
     try:
       #ランキングデータフレーム
       brandId=brandId.values[0]
