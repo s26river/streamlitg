@@ -37,11 +37,19 @@ def get_flavor_charts_response():
   flavor_charts_response = requests.get(urls.get("フレーバーチャート")).json()
   return flavor_charts_response
 
-#ランキング取得
+#全国ランキング取得
+@st.cache
 def get_rank(urlname,key,brandId):
     rank_response = requests.get(urls.get(urlname)).json()
     ranking=pd.DataFrame(rank_response[key]).query('brandId==@brandId')['rank'].values[0]
     return ranking
+
+#県内ランキング取得
+@st.cache
+def get_ken_rank(urlname,key,areaId,brandId):
+  ken_rank_response = requests.get(urls.get('ランキング')).json()[key][areaId]['ranking']
+  ken_ranking=pd.DataFrame(ken_rank_response).query('brandId==@brandId')['rank'].values[0]
+  return ken_ranking
 
 def sake():
 
@@ -96,9 +104,9 @@ def sake():
   if st.checkbox("県内ランキングを表示") :
     try:
       #ランキングデータフレーム
-      brandId=brandId.values[0]
-      ranking=get_rank('ランキング','area',brandId)
-      st.write(f'<span style="font-size:medium">「{text}」の同県内でのランキングは{ranking}位です。</span>',unsafe_allow_html=True)
+      areaId=areaId.values[0]
+      ken_ranking=get_ken_rank(urlname,key,areaId,brandId)
+      st.write(f'<span style="font-size:medium">「{text}」の同県内でのランキングは{ken_ranking}位です。</span>',unsafe_allow_html=True)
     except:
       st.write(f'<span style="color:red;background:pink">この銘柄は県内ランキングを表示できません！！</span>',unsafe_allow_html=True)
       
