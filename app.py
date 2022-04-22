@@ -83,8 +83,8 @@ def sake():
       
       if st.checkbox('全国ランキングの表示'):
         try:
-          #ランキングデータフレーム作成
-      　  brandId=brandId.values[0]
+          #ランキングデータフレーム
+          brandId=brandId.values[0]
       　  ranking=get_rank('ランキング','overall',brandId)   
       　  st.write(f'<span style="font-size:medium">「{text}」の全国ランキングは{ranking}位です。</span>',unsafe_allow_html=True)
     　  except:
