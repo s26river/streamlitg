@@ -86,7 +86,7 @@ def sake():
     #ランキングデータフレーム作成
     brandId=brandId.values[0]
     ranking=get_rank('ランキング','overall',brandId)   
-    st.write(f'<span style="font-size:small">全国ランキング{rank}位</span>',unsafe_allow_html=True)
+    st.write(f'<span style="font-size:small">全国ランキング{ranking}位</span>',unsafe_allow_html=True)
   
 if __name__=='__main__':
       sake()
