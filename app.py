@@ -85,7 +85,7 @@ def sake():
       st.write(f'<span style="color:red;background:pink">この銘柄はフレーバーチャートを表示できません！！</span>',unsafe_allow_html=True)
     
     df=get_rank('ランキング','overall')
-    rank=df['rank'].query('"brandId"==@brandId')
+    rank=df_rank[df_rank['brandId']==brandId]['rank'].values[0]
     rank
    
     #st.write(f'<span style="font-size:small">全国ランキング{rank}位</span>',unsafe_allow_html=True)
