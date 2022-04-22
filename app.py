@@ -87,7 +87,7 @@ def sake():
       st.write(f'<span style="color:red;background:pink">この銘柄はフレーバーチャートを表示できません！！</span>',unsafe_allow_html=True)
   
   checkbox_sts2 = False
-  checkbox_sts2 = st.checkbox("全国ランキングを表示"):
+  checkbox_sts2 = st.checkbox("全国ランキングを表示")
   if checkbox_sts2:
     try:
       #ランキングデータフレーム
