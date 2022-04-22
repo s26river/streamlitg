@@ -91,11 +91,12 @@ def sake():
       left_column.plotly_chart(fig)         
     except:
       st.write(f'<span style="color:red;background:pink">この銘柄はフレーバーチャートを表示できません！！</span>',unsafe_allow_html=True)  
-
+   
+  brandId=brandId.values[0]
+  
   if st.checkbox("全国ランキングを表示") :
     try:
       #ランキングデータフレーム
-      brandId=brandId.values[0]
       ranking=get_rank('ランキング','overall',brandId)
       st.write(f'<span style="font-size:medium">「{text}」の全国ランキングは{ranking}位です。</span>',unsafe_allow_html=True)
     except:
