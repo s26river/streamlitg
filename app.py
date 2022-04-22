@@ -80,8 +80,7 @@ def sake():
     #ランキングデータフレーム作成
     rank_response = requests.get(urls.get("ランキング")).json()
     df_rank=pd.DataFrame(rank_response['overall'])     
-    rank=df_rank[df_rank['brandId']==brandId]
-    rank
+    df_rank
    
     ##st.write(f'<span style="font-size:small">全国ランキング{rank}位</span>',unsafe_allow_html=True)
   
