@@ -107,6 +107,8 @@ def sake():
       #ランキングデータフレーム
       ken_ranking=get_ken_rank('ランキング','areas',areaId,brandId)
       st.write(f'<span style="font-size:medium">「{text}」の同県内でのランキングは{ken_ranking}位です。</span>',unsafe_allow_html=True)
+      st.write(f'<span style="font-size:small">(https://sakenowa.com/area/{areaId})</span>',unsafe_allow_html=True)
+      https://sakenowa.com/area/5
     except:
       st.write(f'<span style="color:red;background:pink">この銘柄は県内ランキングを表示できません！！</span>',unsafe_allow_html=True)
       
