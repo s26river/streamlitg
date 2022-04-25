@@ -13,7 +13,7 @@ import plotly.express as px
 st.write(f'<span style="font-size:xx-large;font-weight:bolder">日本酒AIソムリエ</span>',unsafe_allow_html=True)
 #col1,col2,col3= st.columns(3)
 #col1.image("image/sake1.jpg", use_column_width=True)
-st.write(f'<span style="font-size:small">[さけのわ様のAPI](https://sakenowa.com)を使用しています</span>',unsafe_allow_html=True)
+st.write(f'<span style="font-size:small">[さけのわ様のAPI]https://sakenowa.comを使用しています</span>',unsafe_allow_html=True)
 
 #エンドポイント
 urls = {
@@ -107,7 +107,7 @@ def sake():
       #ランキングデータフレーム
       ken_ranking=get_ken_rank('ランキング','areas',areaId,brandId)
       st.write(f'<span style="font-size:medium">「{text}」の同県内でのランキングは{ken_ranking}位です。</span>',unsafe_allow_html=True)
-      st.write(f'<span style="font-size:small">(https://sakenowa.com/area/{areaId})</span>',unsafe_allow_html=True)
+      st.write(f'<span style="font-size:small">https://sakenowa.com/area/{areaId}</span>',unsafe_allow_html=True)
     except:
       st.write(f'<span style="color:red;background:pink">この銘柄は県内ランキングを表示できません！！</span>',unsafe_allow_html=True)
       
