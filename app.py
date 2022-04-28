@@ -13,7 +13,7 @@ import plotly.express as px
 st.write(f'<span style="font-size:xx-large;font-weight:bolder">日本酒AIソムリエ</span>',unsafe_allow_html=True)
 #col1,col2,col3= st.columns(3)
 #col1.image("image/sake1.jpg", use_column_width=True)
-st.write(f'<span style="font-size:small">[さけのわ様のAPI](https://sakenowa.com)を使用しています</span>',unsafe_allow_html=True)
+st.write(f'<span style="font-size:small">[さけのわ様](https://sakenowa.com)のAPIを使用しています</span>',unsafe_allow_html=True)
 
 #エンドポイント
 urls = {
